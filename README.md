@@ -7,7 +7,29 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Instrucciones para correr
+
+1. Permisos de escritura:
+    ~~~
+	sudo chmod -R 777 storage
+	sudo chmod -R 777 bootstrap/cache
+    ~~~
+
+2. Instalar dependencias:
+	~~~
+    composer install
+    ~~~
+
+3. Generar archivo de configuración
+	En la raiz de la carpeta renombrar el archivo **.env.example** a **.env** o usar 
+    ~~~
+    cp .env.example .env
+    ~~~
+
+4. Generar API Key
+    ~~~
+	php artisan key:generate
+    ~~~
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
