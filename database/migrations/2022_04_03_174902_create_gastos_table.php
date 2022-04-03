@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('gastos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('departamento_id')->constrained('departamentos');
+            $table->foreignId('departamento_id')
+      ->constrained('departamentos')
+      ->onUpdate('cascade')
+      ->onDelete('cascade');
             $table->string('concepto');
             $table->unsignedInteger('cantidad');
             $table->decimal('total');
