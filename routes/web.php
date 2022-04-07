@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdministracionController;
+use App\Http\Controllers\DesarrolloController;
+use App\Http\Controllers\FinanzasController;
+use App\Http\Controllers\MarkVenController;
+use App\Http\Controllers\RHController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +21,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+})->name('home');
+
+/* Route::group(['middleware' => ['auth']], function (){ */
+    Route::get('/users',[UserController::class,'index']);
+
+    Route::resource('administracion', AdministracionController::class);
+
+    Route::resource('desarrollo', DesarrolloController::class);
+
+    Route::resource('finanzas', FinanzasController::class);
+
+    Route::resource('mrk-ventas', MarkVenController::class);
+
+    Route::resource('recursos-humanos', RHController::class);
+   /* }); */
+
+
+
+/* Auth::routes(); */
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
