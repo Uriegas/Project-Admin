@@ -13,16 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('proyectoequipo', function (Blueprint $table) {
+        Schema::create('clientes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('proyecto_id')
-      ->constrained('proyectos')
+            $table->string('nombre');
+            $table->string('organizacion');
+            $table->foreignId('direccion_id')
+      ->constrained('direccion_clientes')
       ->onUpdate('cascade')
       ->onDelete('cascade');
-      $table->foreignId('empleado_id')
-      ->constrained('empleados')
-      ->onUpdate('cascade')
-      ->onDelete('cascade');
+            $table->string('telefono');
+            $table->tinyText('interes');
+            $table->tinyText('descripcion');
             $table->timestamps();
         });
     }
@@ -34,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proyectoequipo');
+        Schema::dropIfExists('clientes');
     }
 };

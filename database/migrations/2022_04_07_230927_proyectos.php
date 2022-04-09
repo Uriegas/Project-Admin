@@ -13,17 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('_clientes', function (Blueprint $table) {
+        Schema::create('proyectos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('organizacion');
-            $table->foreignId('direccion_id')
-      ->constrained('direccion_clientes')
+            $table->mediumText('descripcion');
+            $table->foreignId('cliente_id')
+      ->constrained('clientes')
       ->onUpdate('cascade')
       ->onDelete('cascade');
-            $table->string('telefono');
-            $table->tinyText('interes');
-            $table->tinyText('descripcion');
+            $table->decimal('presupuesto');
+            $table->date('inicio');
+            $table->date('fin');
+            $table->string('imagen');
             $table->timestamps();
         });
     }
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_clientes');
+        Schema::dropIfExists('proyectos');
     }
 };
