@@ -22,9 +22,9 @@
 
 <!-- CONTENIDO -->
 <div class="row">
-    <div class="col-xl-12 col-md-12 col-lg-12">
-        <div class="text-center ml-5">
-            <div class="row">
+    <div class="col-xl-12 col-md-12 col-lg-12 text-center justify-content-center justify-content">
+        <div class="text-center justify-content-center justify-content ml-5">
+            <div class="row text-center justify-content-center justify-content">
                 <div class="col-5">
                     <div class="card text-white bg-success mb-3 card-hover">
                         <div class="card-body">
