@@ -25,6 +25,10 @@
         <!-- FONTAWESOME -->
         <script src="https://kit.fontawesome.com/a36cdd0297.js" crossorigin="anonymous"></script>
 
+		<!-- Bootstrap -->
+		<!-- Iconos de Bootstrap -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
     </head>
 
 
