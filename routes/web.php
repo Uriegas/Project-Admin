@@ -67,6 +67,10 @@ Route::get('/recursos-humanos/evaluaciones', function () {
         return view('mrk-ventas/estrategias_publicidad/dashboard');
     });
 
+    Route::get('/mrk-ventas/estrategias_publicidad/visualizar_estrategia', function() {
+        return view('mrk-ventas/estrategias_publicidad/visualizar_estrategia');
+    });
+
     Route::get('/mrk-ventas/clientes/dashboard', function() {
         return view('mrk-ventas/clientes/dashboard');
     });
