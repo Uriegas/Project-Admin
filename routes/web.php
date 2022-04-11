@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdministracionController;
 use App\Http\Controllers\DesarrolloController;
@@ -23,13 +24,8 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-Route::get('/recursos-humanos/empleados', function () {
-    return view('recursos-humanos/empleados.index');
-})->name('Lista Empleados');
-Route::get('/recursos-humanos/evaluaciones', function () {
-    return view('recursos-humanos.evaluaciones');
-})->name('Lista Evaluaciones');
 /* Route::group(['middleware' => ['auth']], function (){ */
+    Route::get('/users',[UserController::class,'index']);
 
     Route::resource('administracion', AdministracionController::class);
 
@@ -40,23 +36,23 @@ Route::get('/recursos-humanos/evaluaciones', function () {
     Route::resource('mrk-ventas', MarkVenController::class);
 
     Route::resource('recursos-humanos', RHController::class);
-    //Route::get('recursos-humanos/empleados', [EmpleadoController::class,'index']);
-
    /* }); */
-   /*rutas recursos humanos*/
-   Route::get('recursos-humanos/empleados',[RHController::class, 'Listaempleados']);
-   Route::post('recursos-humanos/empleados',[App\Http\Controllers\RHController::class,'storeempleado']);
-   Route::get('recursos-humanos/empleados/create',[RHController::class, 'nuevoempleado']);
-   Route::get('recursos-humanos/empleados/{id}/edit',[RHController::class, 'editarempleado']);
-   Route::patch('recursos-humanos/empleados/{id}',[RHController::class, 'updateempleado']);
-   Route::delete('recursos-humanos/empleados/delete/{id}', [App\Http\Controllers\RHController::class, 'destroyempleado']);
-   Route::get('recursos-humanos/{id}/pdf',[RHController::class, 'pdf']);
-   Route::get('recursos-humanos/evaluaciones', [App\Http\Controllers\RHController::class, 'Listaevaluacion']);
-   Route::get('recursos-humanos/evaluaciones/{id}/create',[RHController::class, 'createevaluacion']);
-   Route::post('recursos-humanos/evaluaciones',[App\Http\Controllers\RHController::class,'storeevaluacion']);
-   Route::delete('recursos-humanos/evaluaciones/delete/{id}', [App\Http\Controllers\RHController::class, 'destroyevaluacion']);
 
-   //
+    // Rutas Marketing y ventas
+
+    Route::get('/mrk-ventas/estrategias_publicidad/dashboard', function() {
+        return view('mrk-ventas/estrategias_publicidad/dashboard');
+    });
+
+    Route::get('/mrk-ventas/clientes/dashboard', function() {
+        return view('mrk-ventas/clientes/dashboard');
+    });
+
+    Route::get('/mrk-ventas/clientes/visualizar_clientes', function() {
+        return view('mrk-ventas/clientes/visualizar_clientes');
+    });
+
+
 
 /* Auth::routes(); */
 
