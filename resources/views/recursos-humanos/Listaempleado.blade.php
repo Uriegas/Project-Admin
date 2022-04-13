@@ -48,7 +48,7 @@
             <th>
                 <div style="display: flex;">
                 <a href="{{ url('/recursos-humanos/empleados/'.$empleado->id.'/edit') }}"><i class="bi bi-pencil-fill opciones"></i></a><!--editar-->
-                <a href="{{ url('/recursos-humanos/empleados/'.$empleado->id.'/pdf') }}"><i class="bi bi-filetype-pdf opciones" style="color: #B454D8"></i></a> <!--pdf-->
+                <a href="{{ url('/recursos-humanos/empleados/pdf/'.$empleado->id) }}"><i class="bi bi-filetype-pdf opciones" style="color: #B454D8"></i></a> <!--pdf-->
                 <a href="{{ url('/recursos-humanos/evaluaciones/'.$empleado->id.'/create') }}"><i class="bi bi-clipboard2-data opciones" style="color: #3B785F"></i></a> <!--evaluar-->
                 <form action="{{ url('/recursos-humanos/empleados/delete/'.$empleado->id) }}" method="post">
                     @csrf
@@ -84,7 +84,11 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No, cancelar</button>
-            <button type="button" class="btn btn-danger">Sí, eliminar</button>
+            <form action="{{ url('/recursos-humanos/empleados/delete/'.$empleado->id) }}" method="post">
+                    @csrf
+                    {{method_field('DELETE')}}                       
+                    <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+                </form>
         </div>
         </div>
     </div>

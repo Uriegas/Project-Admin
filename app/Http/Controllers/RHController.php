@@ -24,9 +24,9 @@ class RHController extends Controller
     {
         //
         $empleado=Empleado::findOrFail($id);
-        $pdf=PDF::loadView('recursos-humanos/empleados.pdf',['empleado'=>$empleado]);
-        return $pdf->download($empleado['Nombre'].'.pdf');
-        //return view('RH/empleado.pdf',compact('empleado'));
+        $pdf=PDF::loadView('recursos-humanos.pdf',['empleado'=>$empleado]);
+        return $pdf->download($empleado['nombre'].'.pdf');
+        //return view('recursos-humanos.pdf',compact('empleado'));
     }
     
     /**

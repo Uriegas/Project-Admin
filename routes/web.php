@@ -53,7 +53,7 @@ Route::get('/recursos-humanos/evaluaciones', function () {
     Route::get('recursos-humanos/empleados/{id}/edit',[RHController::class, 'editarempleado']);
     Route::patch('recursos-humanos/empleados/{id}',[RHController::class, 'updateempleado']);
     Route::delete('recursos-humanos/empleados/delete/{id}', [App\Http\Controllers\RHController::class, 'destroyempleado']);
-    Route::get('recursos-humanos/{id}/pdf',[RHController::class, 'pdf']);
+    Route::get('recursos-humanos/empleados/pdf/{id}',[RHController::class, 'pdf']);
     Route::get('recursos-humanos/evaluaciones', [App\Http\Controllers\RHController::class, 'Listaevaluacion']);
     Route::get('recursos-humanos/evaluaciones/{id}/create',[RHController::class, 'createevaluacion']);
     Route::post('recursos-humanos/evaluaciones',[App\Http\Controllers\RHController::class,'storeevaluacion']);
