@@ -59,7 +59,7 @@ Route::get('/recursos-humanos/evaluaciones', function () {
     Route::post('recursos-humanos/evaluaciones',[App\Http\Controllers\RHController::class,'storeevaluacion']);
     Route::delete('recursos-humanos/evaluaciones/delete/{id}', [App\Http\Controllers\RHController::class, 'destroyevaluacion']);
 
-    //
+    //**************************************** */
 
     // Rutas Marketing y ventas
 
@@ -80,6 +80,28 @@ Route::get('/recursos-humanos/evaluaciones', function () {
     });
 
     //
+
+    //**************************************** */
+
+    // Rutas Finanzas
+
+    Route::get('/presupuesto', function () {
+        return view('finanzas/presupuesto');
+    });
+
+    Route::get('/reporte', function () {
+        return view('finanzas/reporte');
+    });
+    
+    Route::get('/cotizacion', function () {
+        return view('finanzas/cotizacion');
+    });
+    
+    Route::get('/visualizar', function () {
+        return view('finanzas/visualizar_proyecto');
+    });
+
+    //**************************************** */
 
 
 
