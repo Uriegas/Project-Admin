@@ -49,13 +49,11 @@
                 <div style="display: flex;">
                 <a href="{{ url('/recursos-humanos/empleados/'.$empleado->id.'/edit') }}"><i class="bi bi-pencil-fill opciones"></i></a><!--editar-->
                 <a href="{{ url('/recursos-humanos/empleados/pdf/'.$empleado->id) }}"><i class="bi bi-filetype-pdf opciones" style="color: #B454D8"></i></a> <!--pdf-->
-                <a href="{{ url('/recursos-humanos/evaluaciones/'.$empleado->id.'/create') }}"><i class="bi bi-clipboard2-data opciones" style="color: #3B785F"></i></a> <!--evaluar-->
-                <form action="{{ url('/recursos-humanos/empleados/delete/'.$empleado->id) }}" method="post">
-                    @csrf
-                    {{method_field('DELETE')}}                       
-                    <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger opciones" ></i></a>
-                </form><!--eliminar--></div>
-            </th> 
+                <a href="{{ url('/recursos-humanos/evaluaciones/'.$empleado->id.'/create') }}"><i class="bi bi-clipboard2-data opciones" style="color: #3B785F"></i></a> <!--evaluar-->                   
+                <a href="" data-bs-toggle="modal" data-bs-target="#eliminar{{$empleado->id}}"><i class="bi bi-trash3-fill text-danger opciones" ></i></a>
+                    <!--eliminar--></div>
+            </th>
+            @include('recursos-humanos.modalemp') 
         </tr>
         @endforeach
     </body>

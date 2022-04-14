@@ -51,12 +51,10 @@
             <th><?php echo $eva['calificacion']; ?></th>
             <th><?php echo $eva['fecha']; ?></th>
             <th> 
-                <form action="{{ url('/recursos-humanos/evaluaciones/delete/'.$eva->id) }}" method="post">
-                    @csrf
-                    {{method_field('DELETE')}}
-                    <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger opciones" ></i></a>
+                    <a href="" data-bs-toggle="modal" data-bs-target="#eliminar{{$eva->id}}"><i class="bi bi-trash3-fill text-danger opciones" ></i></a>
                     <!--<input type="submit" value="Eliminar" onclick="return confirm('¿Está seguro en eliminar el registro?')">-->
-                </form>
+            </th>
+            @include('recursos-humanos.modaleva')
         </tr>
         @endforeach
     </body>
