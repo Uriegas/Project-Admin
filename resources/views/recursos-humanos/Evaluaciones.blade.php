@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 @section('content')
 
 <style>
@@ -51,18 +51,16 @@
             <th><?php echo $eva['calificacion']; ?></th>
             <th><?php echo $eva['fecha']; ?></th>
             <th> 
-                <form action="{{ url('/recursos-humanos/evaluaciones/delete/'.$eva->id) }}" method="post">
-                    @csrf
-                    {{method_field('DELETE')}}
-                    <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger opciones" ></i></a>
+                    <a href="" data-bs-toggle="modal" data-bs-target="#eliminar{{$eva->id}}"><i class="bi bi-trash3-fill text-danger opciones" ></i></a>
                     <!--<input type="submit" value="Eliminar" onclick="return confirm('¿Está seguro en eliminar el registro?')">-->
-                </form>
+            </th>
+            @include('recursos-humanos.modaleva')
         </tr>
         @endforeach
     </body>
 </table>
 
-<!-- Modal para eliminar una evaluación del empleado -->
+<!-- Modal para eliminar evaluación de empleado -->
 <div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -76,12 +74,16 @@
                 <i class="bi bi-exclamation-circle-fill text-danger fs-1 text-center"></i>
             </div>
             <p class="text-center fs-6">
-                ¿Está seguro de querer eliminar la evaluación empleado seleccionado?
+                ¿Está seguro de querer eliminar la evaluación del empleado seleccionado?
             </p>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No, cancelar</button>
-            <button type="button" class="btn btn-danger">Sí, eliminar</button>
+            <form action="{{ url('/recursos-humanos/evaluaciones/delete/'.$eva->id) }}" method="post">
+                    @csrf
+                    {{method_field('DELETE')}}                       
+                    <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+                </form>
         </div>
         </div>
     </div>
