@@ -13,10 +13,10 @@
 <body>
     <header>
         <div class="container bg-primary">
-            <x-header/>
+            <!-- <x-header/> -->
         </div>
         <div>
-            <x-menu-izquierda/>
+            <!-- <x-menu-izquierda/> -->
         </div>
     </header>
     <script src="{{asset('plugins/p-scrollbar/p-scroll1.js')}}"></script>
