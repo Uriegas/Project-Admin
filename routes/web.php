@@ -20,8 +20,8 @@ use App\Http\Controllers\RHController;
 */
 
 Route::get('/', function () {
-    return view('index');
-})->name('home');
+    return view('home');
+})->name('index');
 
 Route::get('/recursos-humanos/empleados', function () {
     return view('recursos-humanos/empleados.index');
