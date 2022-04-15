@@ -39,14 +39,6 @@
                                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
-                                      
                                     </ol>
                                     <div class="carousel-inner">
                                         <div class="carousel-item active" >
@@ -57,27 +49,6 @@
                                     </div>
                                     <div class="carousel-item">
                                         <img class="d-block w-100" src="{{ asset('img/imagen3.jpg') }}" alt="Third slide">
-                                    </div>
-                                     <div class="carousel-item">
-                                        <img class="d-block w-100" src="{{ asset('img/imagen4.jpg') }}" alt="Four slide">
-                                    </div>
-                                        <div class="carousel-item">
-                                        <img class="d-block w-100" src="{{ asset('img/imagen5.jpg') }}" alt="Five slide">
-                                    </div>
-                                        <div class="carousel-item">
-                                        <img class="d-block w-100" src="{{ asset('img/imagen6.jpg') }}" alt="Six slide">
-                                    </div>
-                                        <div class="carousel-item">
-                                        <img class="d-block w-100" src="{{ asset('img/imagen7.jpg') }}" alt="Seven slide">
-                                    </div>
-                                        <div class="carousel-item">
-                                        <img class="d-block w-100" src="{{ asset('img/imagen8.jpg') }}" alt="Eigth slide">
-                                    </div>
-                                        <div class="carousel-item">
-                                        <img class="d-block w-100" src="{{ asset('img/imagen9.jpg') }}" alt="Nine slide">
-                                    </div>
-                                        <div class="carousel-item">
-                                        <img class="d-block w-100" src="{{ asset('img/imagten10.jpg') }}" alt="Ten slide">
                                     </div>
                                 </div>
 
@@ -99,7 +70,11 @@
 
     <br><br><br><br>
 
+<<<<<<< HEAD
     <div class="row" style="margin-top:100px;">
+=======
+    <div class="row">
+>>>>>>> 1c71bab68a9ee3f54f26e16c91d087922fe9405d
     <div class="col-xl-12 col-md-12 col-lg-12 text-center justify-content-center justify-content">
         <div class="text-center justify-content-center justify-content ml-5">
             <div class="row text-center justify-content-center justify-content">

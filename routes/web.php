@@ -30,7 +30,7 @@ Route::get('/recursos-humanos/evaluaciones', function () {
     return view('recursos-humanos.evaluaciones');
 })->name('Lista Evaluaciones');
 
-    Route::group(['middleware' => ['auth']], function (){ 
+   /*  Route::group(['middleware' => ['auth']], function (){  */
 
     Route::resource('administracion', AdministracionController::class);
 
@@ -41,10 +41,10 @@ Route::get('/recursos-humanos/evaluaciones', function () {
     Route::resource('mrk-ventas', MarkVenController::class);
 
     Route::resource('recursos-humanos', RHController::class);
-    }); 
+    /* });  */
 
     Route::get('recursos-humanos/empleados', [EmpleadoController::class,'index']);
-
+    
     /*rutas recursos humanos*/
     Route::get('recursos-humanos/empleados',[RHController::class, 'Listaempleados']);
     Route::post('recursos-humanos/empleados',[App\Http\Controllers\RHController::class,'storeempleado']);

@@ -49,13 +49,11 @@
                 <div style="display: flex;">
                 <a href="{{ url('/recursos-humanos/empleados/'.$empleado->id.'/edit') }}"><i class="bi bi-pencil-fill opciones"></i></a><!--editar-->
                 <a href="{{ url('/recursos-humanos/empleados/pdf/'.$empleado->id) }}"><i class="bi bi-filetype-pdf opciones" style="color: #B454D8"></i></a> <!--pdf-->
-                <a href="{{ url('/recursos-humanos/evaluaciones/'.$empleado->id.'/create') }}"><i class="bi bi-clipboard2-data opciones" style="color: #3B785F"></i></a> <!--evaluar-->
-                <form action="{{ url('/recursos-humanos/empleados/delete/'.$empleado->id) }}" method="post">
-                    @csrf
-                    {{method_field('DELETE')}}                       
-                    <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger opciones" ></i></a>
-                </form><!--eliminar--></div>
-            </th> 
+                <a href="{{ url('/recursos-humanos/evaluaciones/'.$empleado->id.'/create') }}"><i class="bi bi-clipboard2-data opciones" style="color: #3B785F"></i></a> <!--evaluar-->                   
+                <a href="" data-bs-toggle="modal" data-bs-target="#eliminar{{$empleado->id}}"><i class="bi bi-trash3-fill text-danger opciones" ></i></a>
+                    <!--eliminar--></div>
+            </th>
+            @include('recursos-humanos.modalemp') 
         </tr>
         @endforeach
     </body>
@@ -64,37 +62,6 @@
 <div class="text-center w-90 d-flex justify-content ml-5">
     <a href="{{ url('/recursos-humanos/empleados/create') }}" type="button" class="btn btn-success mr-5"><i class="bi bi-person-plus icono-agregar"></i> Agregar Empleado</a>
 </div>
-
-<!-- Modal para eliminar empleado -->
-<div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-        <div class="modal-header">
-            <div class="text-center justify-content">
-                <h3 class="modal-title text-center justify-content fs-5 text-center" id="exampleModalLabel">Eliminar empleado</h3>
-            </div>
-        </div>
-        <div class="modal-body">
-            <div class="justify-content mb-5 text-center">
-                <i class="bi bi-exclamation-circle-fill text-danger fs-1 text-center"></i>
-            </div>
-            <p class="text-center fs-6">
-                ¿Está seguro de querer eliminar al empleado seleccionado?
-            </p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No, cancelar</button>
-            <form action="{{ url('/recursos-humanos/empleados/delete/'.$empleado->id) }}" method="post">
-                    @csrf
-                    {{method_field('DELETE')}}                       
-                    <button type="submit" class="btn btn-danger">Sí, eliminar</button>
-                </form>
-        </div>
-        </div>
-    </div>
-    </div>
-
-
 
 <!--<a href="{{ url('/recursos-humanos/empleados/create') }}" type="button" class="btn btn-success mr-5" data-bs-toggle="modal" data-bs-target="#agregar"><i class="bi bi-person-plus icono-agregar"></i> Agregar Empleado</a>-->
 
