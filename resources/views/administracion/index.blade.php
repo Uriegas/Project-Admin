@@ -3,14 +3,14 @@
 @section('content')
 
 <!-- CABECERA -->
-<div class="page-header d-xl-flex d-block">
-    <div class="page-leftheader">
-        <h4 class="page-title">Dashboard</h4>
+<div class="page-header d-xl-flex d-block" style="margin-top:200px;">
+    <div class="page-leftheader" style="margin-top:200px;" >
+        <h4 class="page-title">Dashboard1</h4>
     </div>
     {{-- DESCOMENTAR DIV PARA MOSTRAR BOTON DE AGREGAR --}}
     {{-- <div class="page-rightheader ml-md-auto">
         <div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
-            <div class="btn-list">
+            <div class="btn-list" style="margin-top:100px;">
                 <a href="#" class="btn btn-primary mr-3">
                     Agregar cosa</a>
             </div>

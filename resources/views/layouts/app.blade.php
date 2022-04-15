@@ -33,7 +33,7 @@
 
 
 
-	<body class="app sidebar-mini" id="index1">
+	<body class="app sidebar-mini" id="index">
 
 
 		<div class="page">

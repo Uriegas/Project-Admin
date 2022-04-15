@@ -1,11 +1,11 @@
 <div>
-<div class="app-header header" style="z-index:1001;">
+<div class="app-header header" style="z-index:1000;">
 	<div class="container-fluid">
 		<div class="d-flex">
 			<div data-toggle="sidebar">
-				<div class="d-flex" style="margin-left:-80%;">
+				<div class="d-flex" style="margin-left:-70%;">
 					<img src="{{ asset('img/fosterInte.png') }}" class="header-brand-img dark-logo" alt="fosterInte" style="width:80px; ">
-					<h1 style="color:white; margin-top:20px;">Foster Intelligence</h1>
+					<h1 style="color:white; margin-top:10px;">Foster Intelligence</h1>
 					
 				</div>
 			</div>

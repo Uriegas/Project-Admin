@@ -5,8 +5,8 @@
 			<img src="{{ asset('img/fosterInte.png') }}" class="header-brand-img dark-logo" alt="fosterInte">
 		</a>
 	</div> -->
+	<br><br>
 	<div class="app-sidebar3">
-			<br><br><br><br><br><br><br><br><br>
 
 		<!-- <div class="app-sidebar__user">
 			<div class="dropdown user-pro-body text-center">
