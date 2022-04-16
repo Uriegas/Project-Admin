@@ -30,7 +30,7 @@
                             <h6>Nombre: </h6>
                         </div>
                         <div class="w-35">
-                            <h3 class="fw-bolder">Cambiar</h3> 
+                            <h3 class="fw-bolder"><?php echo $cliente['Nombre'];?></h3> 
                         </div>
                     </div>
 
@@ -40,7 +40,7 @@
                             <h6>Organización: </h6>
                         </div>
                         <div class="w-35">
-                            <h4 class="fw-bold">Cambiar</h4> 
+                            <h4 class="fw-bold"><?php echo $cliente['organizacion'];?></h4> 
                         </div>
                     </div>
 
@@ -50,7 +50,7 @@
                             <h6>ID: </h6>
                         </div>
                         <div class="mt-5 w-35">
-                            <h5 class="fw-normal">Cambiar</h5> 
+                            <h5 class="fw-normal"><?php echo $cliente['id'];?></h5> 
                         </div>
                     </div>
 
@@ -60,7 +60,7 @@
                             <h6>Teléfono de contacto: </h6>
                         </div>
                         <div class="w-35">
-                            <h5 class="fw-normal">Cambiar</h5> 
+                            <h5 class="fw-normal"><?php echo $cliente['telefono'];?></h5> 
                         </div>
                     </div>
 
@@ -70,7 +70,7 @@
                             <h6>Interés en la empresa: </h6>
                         </div>
                         <div class="w-35">
-                            <h5 class="fw-normal">Cambiar</h5> 
+                            <h5 class="fw-normal"><?php echo $cliente['interes'];?></h5> 
                         </div>
                     </div>
 
@@ -80,7 +80,7 @@
                             <h6>Descripción del interés: </h6>
                         </div>
                         <div class="w-35">
-                            <h5 class="fw-normal">Cambiar Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta reprehenderit reiciendis iusto necessitatibus, nesciunt laboriosam dolorum sit numquam et voluptate vero quas sequi laborum nemo, debitis quidem incidunt quisquam nostrum.</h5> 
+                            <h5 class="fw-normal"><?php echo $cliente['descripcion'];?></h5> 
                         </div>
                     </div>
                 </div>
@@ -91,51 +91,8 @@
                 <div class="mt-5 ml-4">
                     <!-- Calle -->
                     <div class="fs-5 d-flex mb-4">
-                        <div class="w-15 mt-5">
-                            <h6>Calle: </h6>
-                        </div>
                         <div class="mt-5 w-35">
-                            <h5 class="fw-normal">Cambiar</h5> 
-                        </div>
-                    </div>
-
-                    <!-- Colonia -->
-                    <div class="fs-5 d-flex mb-4">
-                        <div class="w-15">
-                            <h6>Colonia: </h6>
-                        </div>
-                        <div class="w-35">
-                            <h5 class="fw-normal">Cambiar</h5> 
-                        </div>
-                    </div>
-
-                    <!-- Código postal -->
-                    <div class="fs-5 d-flex mb-4">
-                        <div class="w-15">
-                            <h6>Código postal: </h6>
-                        </div>
-                        <div class="w-35">
-                            <h5 class="fw-normal">Cambiar</h5> 
-                        </div>
-                    </div>
-
-                    <!-- Estado -->
-                    <div class="fs-5 d-flex mb-4">
-                        <div class="w-15">
-                            <h6>Estado: </h6>
-                        </div>
-                        <div class="w-35">
-                            <h5 class="fw-normal">Cambiar</h5> 
-                        </div>
-                    </div>
-
-                    <!-- Ciudad -->
-                    <div class="fs-5 d-flex mb-4">
-                        <div class="w-15">
-                            <h6>Ciudad: </h6>
-                        </div>
-                        <div class="w-35">
-                            <h5 class="fw-normal">Cambiar</h5> 
+                            <h5 class="fw-normal"><?php echo $cliente['direccion'];?></h5> 
                         </div>
                     </div>
                 </div>

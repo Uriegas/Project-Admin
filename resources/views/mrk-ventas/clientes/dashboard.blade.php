@@ -47,7 +47,6 @@
                     <tr>
                         <th scope="col" style="color: #fff;">ID</th>
                         <th scope="col" style="color: #fff;">NOMBRE</th>
-                        <th scope="col" style="color: #fff;">APELLIDO(s)</th>
                         <th scope="col" style="color: #fff;">ORGANIZACIÓN</th>
                         <th scope="col" style="color: #fff;">TELÉFONO DE CONTACTO</th>
                         <th scope="col" style="color: #fff;">INTERÉS</th>
@@ -55,24 +54,26 @@
                     </tr>
                 </thead>
                 <tbody class="">
+                    @foreach( $clientes as $cliente )
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
+                        <th scope="row">{{ $cliente->id }}</th>
+                        <td>{{ $cliente->nombre }}</td>
+                        <td>{{ $cliente->organizacion }}</td>
+                        <td>{{ $cliente->telefono }}</td>
+                        <td>{{ $cliente->interes }}</td>
                         <td>
                             <!-- Acciones:
                             - La opción de 'visualizar' se abre en otra página
                             - La opción de 'agregar' y 'editar' se abre en la misma página con un modal
                             - La opción de 'eliminar' se abre un modal tipo notificación en la misma página
                             -->
-                            <a href="/mrk-ventas/clientes/visualizar_clientes"><i class="bi bi-eye-fill mr-2 text-primary" style="font-size: 18px;"></i></a> 
+                            <a href="{{ url('/mrk-ventas/clientes/visualizar_estrategia/'.$cliente->id) }}"><i class="bi bi-eye-fill mr-2 text-primary" style="font-size: 18px;"></i></a> 
                             <a href="" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
-                            <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a>
+                            <a href="" data-bs-toggle="modal" data-bs-target="#eliminar{{$cliente->id}}"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a>
                         </td>
+                        @include('mrk-ventas/clientes/modal_clientes.delete')
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -125,31 +126,6 @@
             </div>
             </div>
         </div>
-    </div>
-
-    <!-- Modal eliminar -->
-    <div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-        <div class="modal-header">
-            <div class="text-center justify-content">
-                <h3 class="modal-title text-center justify-content fs-5 text-center" id="exampleModalLabel">Eliminar cliente</h3>
-            </div>
-        </div>
-        <div class="modal-body">
-            <div class="justify-content mb-5 text-center">
-                <i class="bi bi-exclamation-circle-fill text-danger fs-1 text-center"></i>
-            </div>
-            <p class="text-center fs-6">
-                ¿Está seguro de querer eliminar el cliente seleccionado?
-            </p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No, cancelar</button>
-            <button type="button" class="btn btn-danger">Sí, eliminar</button>
-        </div>
-        </div>
-    </div>
     </div>
 
     <!-- Modal editar -->
@@ -263,121 +239,10 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal agregar -->
-    <div class="modal fade" id="agregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class= "modal-dialog modal-dialog-scrollable " role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fs-5" id="exampleModalLabel">Agregar cliente</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <form action="#">
-                        <!-- ID -->
-                        <div class="row mb-3">
-                            <label for="" class="col-sm-4 col-form-label">ID</label>
-                            <div class="col-sm-2">
-                                <input type="number" class="form-control" disabled>
-                            </div>
-                        </div>
-                        <!-- Nombre -->
-                        <div class="row mb-3">
-                            <label for="" class="col-sm-4 col-form-label">Nombre</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" autofocus required>
-                            </div>
-                        </div>
-                        <!-- Apellido -->
-                        <div class="row mb-3">
-                            <label for="" class="col-sm-4 col-form-label">Apellido</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" autofocus required>
-                            </div>
-                        </div>
-                        <!-- Organización -->
-                        <div class="row mb-3">
-                            <label for="" class="col-sm-4 col-form-label">Organización</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" autofocus required>
-                            </div>
-                        </div>
-                        <!-- Teléfono de contacto -->
-                        <div class="row mb-3">
-                            <label for="" class="col-sm-4 col-form-label">Teléfono de contacto</label>
-                            <div class="col-sm-8">
-                                <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="834 xxx xxxx" autofocus required>
-                            </div>
-                        </div>
-                        <!-- Interés en la empresa -->
-                        <div class="row mb-3">
-                            <label for="" class="col-sm-4 col-form-label">Interés en la empresa</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" autofocus required placeholder="Aplicación móvil, sistema, etc.">
-                            </div>
-                        </div>
-                        <!-- Descripción del interés -->
-                        <div class="row mb-3">
-                            <label for="" class="col-sm-4 col-form-label">Descripción del interés</label>
-                            <div class="col-sm-8">
-                                <textarea class="form-control"></textarea>
-                            </div>
-                        </div>
-
-
-                        <fieldset class="mt-5">
-                            <legend class="fs-6 text-center mb-4"> <hr> Dirección de la organización</legend>
-                            <!-- Calle -->
-                            <div class="row mb-3">
-                                <label for="" class="col-sm-4 col-form-label">Calle</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" autofocus required>
-                                </div>
-                            </div>
-                            <!-- Colonia -->
-                            <div class="row mb-3">
-                                <label for="" class="col-sm-4 col-form-label">Colonia</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" autofocus required>
-                                </div>
-                            </div>
-                            <!-- Código postal -->
-                            <div class="row mb-3">
-                                <label for="" class="col-sm-4 col-form-label">Código postal</label>
-                                <div class="col-sm-8">
-                                    <input type="text" minlength="5" maxlength="5" class="form-control" autofocus required placeholder="87019">
-                                </div>
-                            </div>
-                            <!-- Estado -->
-                            <div class="row mb-3">
-                                <label for="" class="col-sm-4 col-form-label">Estado</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" autofocus required placeholder="Tamaulipas">
-                                </div>
-                            </div>
-                            <!-- Ciudad -->
-                            <div class="row mb-3">
-                                <label for="" class="col-sm-4 col-form-label">Ciudad</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" autofocus required placeholder="Victoria">
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Agregar</button>
-                </div>
-            </div>
-        </div>
-    </div>
     
     </div>
 </div>
+@include('mrk-ventas.clientes.modal_clientes.create')
 <!-- FIN CONTENIDO -->
 @endsection
 

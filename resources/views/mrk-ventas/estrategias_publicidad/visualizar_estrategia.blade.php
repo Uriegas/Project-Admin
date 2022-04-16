@@ -29,7 +29,7 @@
                         <h6>Título: </h6>
                     </div>
                     <div class="w-35">
-                        <h3 class="fw-bolder">Cambiar</h3> 
+                        <h3 class="fw-bolder"><?php echo $estrategia['titulo'];?></h3> 
                     </div>
                 </div>
 
@@ -39,7 +39,7 @@
                         <h6>Autor: </h6>
                     </div>
                     <div class="w-35">
-                        <h4 class="fw-bold">Cambiar</h4> 
+                        <h4 class="fw-bold"><?php echo $estrategia['autor'];?></h4> 
                     </div>
                 </div>
 
@@ -49,7 +49,7 @@
                         <h6>ID: </h6>
                     </div>
                     <div class="w-35">
-                        <h5 class="fw-bold">Cambiar</h5> 
+                        <h5 class="fw-bold"><?php echo $estrategia['id'];?></h5> 
                     </div>
                 </div>
                 
@@ -59,7 +59,7 @@
                 <!-- Imagen --> 
                 <div class="col-3 mr-5 mt-5"> <!-- Se cambia el src de la imagen -->
                     <h6>Imagen: </h6>
-                    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="img-fluid d-block w-100" alt="...">
+                    <img src="{{ asset('storage').'/'.$estrategia['imagen'] }}" class="img-fluid d-block w-100" alt="...">
                     <a href="" data-bs-toggle="modal" data-bs-target="#ampliar_imagen" class="stretched-link"></a>
                 </div>
 
@@ -70,7 +70,7 @@
                             <h6>Descripción: </h6>
                         </div>
                         <div class="w-35">
-                            <h5 class="fw-normal">Cambiar Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta reprehenderit reiciendis iusto necessitatibus, nesciunt laboriosam dolorum sit numquam et voluptate vero quas sequi laborum nemo, debitis quidem incidunt quisquam nostrum.</h5> 
+                            <h5 class="fw-normal"><?php echo $estrategia['descripcion'];?></h5> 
                         </div>
                     </div>
                     <!-- Fecha de inicio -->
@@ -79,7 +79,7 @@
                             <h6>Fecha de inicio: </h6>
                         </div>
                         <div class="w-35">
-                            <h5 class="fw-normal">Cambiar</h5> 
+                            <h5 class="fw-normal"><?php echo $estrategia['inicio'];?></h5> 
                         </div>
                     </div>
                     <!-- Fecha de finalización -->
@@ -88,7 +88,7 @@
                             <h6>Fecha de finalización: </h6>
                         </div>
                         <div class="w-35">
-                            <h5 class="fw-normal">Cambiar</h5> 
+                            <h5 class="fw-normal"><?php echo $estrategia['fin'];?></h5> 
                         </div>
                     </div>
                     <!-- Presupuesto estimado -->
@@ -97,7 +97,7 @@
                             <h6>Presupuesto estimado: </h6>
                         </div>
                         <div class="w-35">
-                            <h5 class="fw-normal">Cambiar</h5> 
+                            <h5 class="fw-normal"><?php echo $estrategia['presupuesto'];?></h5> 
                         </div>
                     </div>
                 </div>

@@ -17,10 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('organizacion');
-            $table->foreignId('direccion_id')
-      ->constrained('direccion_clientes')
-      ->onUpdate('cascade')
-      ->onDelete('cascade');
+            $table->tinytext('direccion');
             $table->string('telefono');
             $table->tinyText('interes');
             $table->tinyText('descripcion');

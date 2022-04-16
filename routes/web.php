@@ -62,22 +62,26 @@ Route::get('/recursos-humanos/evaluaciones', function () {
 
     // Rutas Marketing y ventas
 
-    Route::get('/mrk-ventas/estrategias_publicidad/dashboard', function() {
-        return view('mrk-ventas/estrategias_publicidad/dashboard');
-    });
+ 
 
     Route::get('/mrk-ventas/estrategias_publicidad/visualizar_estrategia', function() {
         return view('mrk-ventas/estrategias_publicidad/visualizar_estrategia');
-    });
-
-    Route::get('/mrk-ventas/clientes/dashboard', function() {
-        return view('mrk-ventas/clientes/dashboard');
     });
 
     Route::get('/mrk-ventas/clientes/visualizar_clientes', function() {
         return view('mrk-ventas/clientes/visualizar_clientes');
     });
 
+    Route::get('mrk-ventas/estrategias_publicidad/dashboard',[MarkVenController::class, 'estrategias']);
+    Route::get('mrk-ventas/clientes/dashboard',[MarkVenController::class, 'clientes']);
+    Route::post('mrk-ventas', [App\Http\Controllers\MarkVenController::class,'store']);
+    Route::post('mrk-ventas/clientes', [App\Http\Controllers\MarkVenController::class,'storeclientes']);
+    Route::get('mrk-ventas/estrategias_publicidad/visualizar_estrategia/{id}',[MarkVenController::class, 'mostrarEstrategia']);
+    Route::get('mrk-ventas/clientes/visualizar_estrategia/{id}',[MarkVenController::class, 'mostrarCliente']);
+    Route::get('mrk-ventas/estrategias_publicidad/modal_estrategias/',[MarkVenController::class, 'editarEstrategia']);
+    Route::patch('mrk-ventas/estrategias_publicidad/{id}',[MarkVenController::class, 'updateestrategia']);
+    Route::delete('mrk-ventas/estrategias_publicidad/dashboard/delete/{id}',[App\Http\Controllers\MarkVenController::class, 'destroyestrategia']);
+    Route::delete('mrk-ventas/clientes/dashboard/delete/{id}',[App\Http\Controllers\MarkVenController::class, 'destroycliente']);
     //
 
     //**************************************** */
