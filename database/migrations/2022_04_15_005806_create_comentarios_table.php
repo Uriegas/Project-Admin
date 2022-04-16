@@ -13,22 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('actividades_proyecto', function (Blueprint $table) {
+        Schema::create('comentarios', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
-            $table->foreignId('encargado')
+            $table->date('fecha');
+            $table->tinyText('comentario');
+            $table->foreignId('id_actividad')
+            ->constrained('actividades_proyecto')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->foreignId('id_empleado')
             ->constrained('empleados')
             ->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->foreignId('tablero_id')
-            ->constrained('tablero')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
-            $table->date('inicio');
-            $table->date('fin');
-            $table->tinyText('actividades');
-            $table->tinyInteger('estatus');
-            $table->timestamps();
         });
     }
 
@@ -39,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('actividades_proyecto');
+        Schema::dropIfExists('comentarios');
     }
 };

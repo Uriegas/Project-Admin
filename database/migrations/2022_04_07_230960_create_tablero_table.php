@@ -13,21 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('actividades_proyecto', function (Blueprint $table) {
+        Schema::create('tablero', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->foreignId('encargado')
-            ->constrained('empleados')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
-            $table->foreignId('tablero_id')
-            ->constrained('tablero')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
             $table->date('inicio');
             $table->date('fin');
-            $table->tinyText('actividades');
-            $table->tinyInteger('estatus');
+            $table->tinyText('descripcion');
+            $table->foreignId('codigo_proyecto')
+      ->constrained('proyectos')
+      ->onUpdate('cascade')
+      ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -39,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('actividades_proyecto');
+        Schema::dropIfExists('tablero');
     }
 };

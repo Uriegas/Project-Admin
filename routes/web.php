@@ -102,7 +102,28 @@ Route::get('/recursos-humanos/evaluaciones', function () {
 
     //**************************************** */
 
+    // Desarrollo
+    Route::get('desarrollo',[DesarrolloController::class, 'showAllTableros'])->name('showAllTableros');
 
+    Route::get('desarrollo/tablero/{idTablero}/actividades', [DesarrolloController::class, 'showActividadesTablero'])->name('show.tablero');
+
+    Route::post('desarrollo/tablero/agregarActividadTablero', [DesarrolloController::class, 'agregarActividadTablero'])->name('agregarActividadTablero');
+
+    Route::get('desarrollo/tablero/{idTablero}/actividades/{idActividad}', [DesarrolloController::class, 'showActividadTablero'])->name('show.actividad');
+
+    Route::post('desarrollo/tablero/editarActividadTablero', [DesarrolloController::class, 'editarActividadTablero'])->name('editarActividadTablero');
+    
+    Route::get('desarrollo/tablero/eliminarActividadTablero/{idActividad}', [DesarrolloController::class, 'eliminarActividadTablero'])->name('eliminarActividadTablero');
+
+
+    Route::post('desarrollo/agregarTablero', [DesarrolloController::class, 'agregarTablero'])->name('agregarTablero');
+    Route::get('desarrollo/tablero/{idTablero}', [DesarrolloController::class, 'showTablero'])->name('showTablero');
+    Route::post('desarrollo/editarTablero', [DesarrolloController::class, 'editarTablero'])->name('editarTablero');
+    Route::get('desarrollo/eliminarTablero/{idTablero}', [DesarrolloController::class, 'eliminarTablero'])->name('eliminarTablero');
+    //Route::get('desarrollo/tablero')
+    //**************************************** */
+
+    
 
  Auth::routes(); 
 
