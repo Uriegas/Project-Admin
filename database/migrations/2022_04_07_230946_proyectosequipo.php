@@ -21,7 +21,7 @@ return new class extends Migration
                 ->constrained()
                 ->onDelete('cascade');
             $table->foreignId('empleado_id')
-                ->constrained()
+                ->constrained('users')
                 ->onDelete('cascade');
             $table->timestamps();
         });

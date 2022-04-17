@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             GastosSeeder::class,
             ClientesSeeder::class,
             ProyectosSeeder::class,
+            ProyectosEquipoSeeder::class,
             PresupuestoProyectoSeeder::class,
         ]);
     }
