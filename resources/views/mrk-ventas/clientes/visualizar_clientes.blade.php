@@ -30,7 +30,7 @@
                             <h6>Nombre: </h6>
                         </div>
                         <div class="w-35">
-                            <h3 class="fw-bolder"><?php echo $cliente['Nombre'];?></h3> 
+                            <h3 class="fw-bolder"><?php echo $cliente['nombre'];?></h3> 
                         </div>
                     </div>
 

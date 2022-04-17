@@ -68,9 +68,10 @@
                             - La opción de 'eliminar' se abre un modal tipo notificación en la misma página
                             -->
                             <a href="{{ url('/mrk-ventas/clientes/visualizar_estrategia/'.$cliente->id) }}"><i class="bi bi-eye-fill mr-2 text-primary" style="font-size: 18px;"></i></a> 
-                            <a href="" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
+                            <a href="" data-bs-toggle="modal" data-bs-target="#editar{{$cliente->id}}"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
                             <a href="" data-bs-toggle="modal" data-bs-target="#eliminar{{$cliente->id}}"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a>
                         </td>
+                        @include('mrk-ventas/clientes/modal_clientes.edit')
                         @include('mrk-ventas/clientes/modal_clientes.delete')
                     </tr>
                     @endforeach
@@ -124,118 +125,6 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
             </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal editar -->
-    <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class= "modal-dialog modal-dialog-scrollable " role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fs-5" id="exampleModalLabel">Editar información del cliente</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <form action="#">
-                        <!-- ID -->
-                        <div class="row mb-3">
-                            <label for="" class="col-sm-4 col-form-label">ID</label>
-                            <div class="col-sm-2">
-                                <input type="number" class="form-control" disabled>
-                            </div>
-                        </div>
-                        <!-- Nombre -->
-                        <div class="row mb-3">
-                            <label for="" class="col-sm-4 col-form-label">Nombre</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" autofocus required>
-                            </div>
-                        </div>
-                        <!-- Apellido -->
-                        <div class="row mb-3">
-                            <label for="" class="col-sm-4 col-form-label">Apellido</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" autofocus required>
-                            </div>
-                        </div>
-                        <!-- Organización -->
-                        <div class="row mb-3">
-                            <label for="" class="col-sm-4 col-form-label">Organización</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" autofocus required>
-                            </div>
-                        </div>
-                        <!-- Teléfono de contacto -->
-                        <div class="row mb-3">
-                            <label for="" class="col-sm-4 col-form-label">Teléfono de contacto</label>
-                            <div class="col-sm-8">
-                                <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="834 xxx xxxx" autofocus required>
-                            </div>
-                        </div>
-                        <!-- Interés en la empresa -->
-                        <div class="row mb-3">
-                            <label for="" class="col-sm-4 col-form-label">Interés en la empresa</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" autofocus required placeholder="Aplicación móvil, sistema, etc.">
-                            </div>
-                        </div>
-                        <!-- Descripción del interés -->
-                        <div class="row mb-3">
-                            <label for="" class="col-sm-4 col-form-label">Descripción del interés</label>
-                            <div class="col-sm-8">
-                                <textarea class="form-control"></textarea>
-                            </div>
-                        </div>
-
-
-                        <fieldset class="mt-5">
-                            <legend class="fs-6 text-center mb-4"> <hr> Dirección de la organización</legend>
-                            <!-- Calle -->
-                            <div class="row mb-3">
-                                <label for="" class="col-sm-4 col-form-label">Calle</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" autofocus required>
-                                </div>
-                            </div>
-                            <!-- Colonia -->
-                            <div class="row mb-3">
-                                <label for="" class="col-sm-4 col-form-label">Colonia</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" autofocus required>
-                                </div>
-                            </div>
-                            <!-- Código postal -->
-                            <div class="row mb-3">
-                                <label for="" class="col-sm-4 col-form-label">Código postal</label>
-                                <div class="col-sm-8">
-                                    <input type="text" minlength="5" maxlength="5" class="form-control" autofocus required placeholder="87019">
-                                </div>
-                            </div>
-                            <!-- Estado -->
-                            <div class="row mb-3">
-                                <label for="" class="col-sm-4 col-form-label">Estado</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" autofocus required placeholder="Tamaulipas">
-                                </div>
-                            </div>
-                            <!-- Ciudad -->
-                            <div class="row mb-3">
-                                <label for="" class="col-sm-4 col-form-label">Ciudad</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" autofocus required placeholder="Victoria">
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Actualizar</button>
-                </div>
             </div>
         </div>
     </div>

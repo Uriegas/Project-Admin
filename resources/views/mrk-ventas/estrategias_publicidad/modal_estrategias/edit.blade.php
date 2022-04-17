@@ -11,8 +11,6 @@
                     </button>
                 </div>
                 <div class="modal-body">
-
-                    <form action="#">
                         <!-- ID --> 
                         <div class="row mb-3">
                             <label for="" class="col-sm-4 col-form-label">ID</label> 
@@ -77,8 +75,6 @@
                                 </div>
                             </div>
                         </div>
-
-                    </form>
 
                 </div>
                 <div class="modal-footer">

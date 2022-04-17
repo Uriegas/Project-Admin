@@ -80,7 +80,9 @@ Route::get('/recursos-humanos/evaluaciones', function () {
     Route::get('mrk-ventas/estrategias_publicidad/visualizar_estrategia/{id}',[MarkVenController::class, 'mostrarEstrategia']);
     Route::get('mrk-ventas/clientes/visualizar_estrategia/{id}',[MarkVenController::class, 'mostrarCliente']);
     Route::get('mrk-ventas/estrategias_publicidad/modal_estrategias/',[MarkVenController::class, 'editarEstrategia']);
+    Route::get('mrk-ventas/clientes/modal_clientes/',[MarkVenController::class, 'editarCliente']);
     Route::patch('mrk-ventas/estrategias_publicidad/{id}',[MarkVenController::class, 'updateestrategia']);
+    Route::patch('mrk-ventas/clientes/{id}',[MarkVenController::class, 'updatecliente']);
     Route::delete('mrk-ventas/estrategias_publicidad/dashboard/delete/{id}',[App\Http\Controllers\MarkVenController::class, 'destroyestrategia']);
     Route::delete('mrk-ventas/clientes/dashboard/delete/{id}',[App\Http\Controllers\MarkVenController::class, 'destroycliente']);
     //

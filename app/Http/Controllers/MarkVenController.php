@@ -104,6 +104,12 @@ class MarkVenController extends Controller
         return redirect('/mrk-ventas/estrategias_publicidad/modal_estrategias/edit', compact('estrategia'));
     }
 
+    public function editarCliente($id)
+    {
+        $cliente=Actividades_Estrategias::findOrFail($id);
+        return redirect('/mrk-ventas/clientes/modal_clientes/edit', compact('cliente'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -131,8 +137,8 @@ class MarkVenController extends Controller
         //
         $datosClientes = request()->except('_token','_method');
         Clientes::where('id','=',$id)->update($datosClientes);
-        $cliente=Clientes::findOrFail($id);
-        return redirect('/mrk-ventas/clientes/dashboard', compact($cliente));
+        $datos['clientes']=Clientes::paginate();
+        return redirect('mrk-ventas/clientes/dashboard');
     }
 
     /**
