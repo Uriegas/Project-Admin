@@ -102,7 +102,7 @@ class DesarrolloController extends Controller
 
     public function showActividadesTablero($idTablero)
     {
-        $sqlQuery = 'SELECT actividades_proyecto.* FROM actividades_proyecto INNER JOIN tablero WHERE actividades_proyecto.tablero_id = ? AND tablero.id = ?;';
+        $sqlQuery = 'SELECT actividades_proyecto.* FROM actividades_proyecto INNER JOIN tablero WHERE actividades_proyecto.tablero_id = ? AND tablero.id = ? ORDER BY actividades_proyecto.estatus;';
         
         $actividades = json_decode(json_encode(DB::select($sqlQuery, [$idTablero, $idTablero], true)));
         $tablero = Tablero::findOrfail($idTablero);

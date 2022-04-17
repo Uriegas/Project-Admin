@@ -6,28 +6,52 @@
 @section('content')
 
 <!-- CABECERA -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 <!-- FIN CABECERA -->
 
 <!-- CONTENIDO -->
-    <div>
-        <h2 style="margin-left:40px; margin-top: 40px;">Actividades</h2>
-        <nav class="navbar navbar-light bg-light" style="margin-top: -5px; margin-left: 40px;">
-            <p style="font-size: 16px;" class="navbar-brand"><a class="navbar-brand" href="{{route('showAllTableros')}}" style="font-size: 16px; color: #9568A9;">Tableros</a>/ {{$nombreTablero}} / actividades</p>
-        </nav>
-    </div>
-    <div style="margin-left: 85%">
-        <div>
-            <button type="button" class="btn btn-success al-auto" data-bs-toggle="modal" data-bs-target="#tar1"><i class="bi bi-plus" style="margin-right: 10px;"></i> Agregar nueva</button>
+    <div class="page-header d-xl-flex d-block ml-5">
+        <div class="page-leftheader ml-5 mt-5">
+            <h4 class="page-title">Desarrollo</h4> 
+            <p style="font-size: 16px;" class="navbar-brand my-0">
+                <a class="navbar-brand mr-1" href="{{route('showAllTableros')}}" style="font-size: 16px; color: #979799;">Tableros</a> / {{$nombreTablero}} / actividades
+            </p>
         </div>
     </div>
 
-    <div>
-        <div class="d-flex justify-content-center">
+    <div class="row dflex">   
+        <div class="container" style="margin: 0px; margin-left: 50px; ">
+            <button type="button" class="btn btn-success al-auto" data-bs-toggle="modal" data-bs-target="#tar1"><i class="bi bi-plus" style="margin-right: 10px;"></i> Agregar actividad</button>
+        </div> 
+        <div class="row d-flex justify-content-center">
             @foreach ($actividades as $actividad)
-                <div class="card" style="width: 18rem;">
+                <div class="card" style="width: 18rem; margin: 10px;">
                     <div class="card-body">
                         <h5 class="card-title">{{$actividad->titulo}}</h5>
                         <p class="card-text">{{$actividad->descripcion}}</p>
+                        
+                            @php
+                                if($actividad->estatus == 0)
+                                {
+                                    echo '<div class="bg-info text-white rounded" style="width: fit-content; padding-left: 10px; padding-right: 10px; margin-bottom: 10px; font-weight: bold">Desarrollo</div>';
+                                }
+                                elseif($actividad->estatus == 1)
+                                {
+                                    echo '<div class="bg-warning text-white rounded" style="width: fit-content; padding-left: 10px; padding-right: 10px; margin-bottom: 10px; font-weight: bold">Revisión</div>';
+                                }
+                                elseif($actividad->estatus == 2)
+                                {
+                                    echo '<div class="text-white rounded" style="width: fit-content; padding-left: 10px; padding-right: 10px; margin-bottom: 10px; font-weight: bold; background-color: #198754;">Terminado</div>';
+                                }
+                                else
+                                {
+                                    echo '<div class="bg-info text-white rounded" style="width: fit-content; padding-left: 10px; padding-right: 10px; margin-bottom: 10px; font-weight: bold">Desarrollo</div>';
+                                }
+                            @endphp
+                        
                         <button type="button" class="btn btn-primary btnVerActividad" data-bs-toggle="modal" data-bs-target="#verActividad" data-id="{{route('show.actividad', ['idTablero' => $idTablero, 'idActividad' => $actividad->id])}}"><i class="bi bi-eye"></i></button>
                         <button type="button" class="btn btn-danger btnEliminarActividad" data-id="{{route('eliminarActividadTablero', ['idActividad' => $actividad->id])}}"><i class="bi bi-trash3"></i></button>
                     </div>
@@ -231,8 +255,6 @@
         </div>
 
         
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
         <script>
             //const btnVerActividad = document.getElementById('btnVerActividad');
