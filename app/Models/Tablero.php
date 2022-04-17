@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Tablero extends Model
 {
     use HasFactory;
-    protected $table = 'Tablero';
+    protected $table = 'tablero';
 
 }
