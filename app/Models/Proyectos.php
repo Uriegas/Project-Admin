@@ -18,6 +18,5 @@ class Proyectos extends Model
         'presupuesto', // Total de presupuesto
         'inicio',
         'fin',
-        'imagen'
     ];
 }

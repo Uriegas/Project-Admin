@@ -24,7 +24,6 @@ return new class extends Migration
             $table->decimal('presupuesto');
             $table->date('inicio');
             $table->date('fin');
-            $table->string('imagen');
             $table->timestamps();
         });
     }
