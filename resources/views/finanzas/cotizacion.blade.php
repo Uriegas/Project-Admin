@@ -41,11 +41,21 @@
                     <thead style="background-color: #1B3280;">
                         <tr>
                             <th scope="col" style="color: #fff;">NOMBRE DEL PROYECTO</th> 
-                            <th scope="col" style="color: #fff;">RESPONSABLE</th>
+                            <th scope="col" style="color: #fff;">Cliente</th>
                             <th scope="col" style="color: #fff;">VISUALIZAR</th>
                         </tr>
                     </thead>
                     <tbody class="">
+                        @foreach($proyectos as $proyecto)
+                        <tr>
+                            <th scope="row">{{$proyecto->nombre}}</th>
+                            <td>{{$proyecto->cliente}}</td>
+                            <td>
+                                <a href="{{route('cotizacion.show', $proyecto->id)}}"><i class="bi bi-eye-fill mr-2 text-primary" style="font-size: 18px;"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+
                         <tr>
                             <th scope="row">Sistema web para el gobierno del estado</th>
                             <td>Daniela Huerta</td>

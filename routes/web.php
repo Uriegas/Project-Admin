@@ -4,11 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdministracionController;
 use App\Http\Controllers\DesarrolloController;
-use App\Http\Controllers\FinanzasController;
 use App\Http\Controllers\MarkVenController;
 use App\Http\Controllers\RHController;
 use App\Http\Controllers\PresupuestoController;
 use App\Http\Controllers\ReporteGastosController;
+use App\Http\Controllers\CotizacionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +47,7 @@ Route::get('/recursos-humanos/evaluaciones', function () {
 
     Route::resource('desarrollo', DesarrolloController::class);
 
-    Route::resource('finanzas', FinanzasController::class);
+    Route::get('finanzas', function (){return view('finanzas.index');});
 
     Route::resource('mrk-ventas', MarkVenController::class);
 
@@ -104,15 +104,8 @@ Route::get('/recursos-humanos/evaluaciones', function () {
     Route::resources([
         '/presupuesto' => PresupuestoController::class,
         '/reporte' => ReporteGastosController::class,
+        '/cotizacion' => CotizacionController::class,
     ]);
-    
-    Route::get('/cotizacion', function () {
-        return view('finanzas/cotizacion');
-    });
-    
-    Route::get('/visualizar', function () {
-        return view('finanzas/visualizar_proyecto');
-    });
 
     //**************************************** */
 

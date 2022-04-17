@@ -66,14 +66,13 @@
                                     <td id="total" name="total">{{$gasto->total}}</td>
                                     <td>
                                         <a href="{{route('reporte.edit', $gasto->id)}}"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
-                                        {{-- <a href="{{route('reporte.edit', $gasto->id)}}" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a> --}}
-                                        {{-- <button type="button" class="btn btn-success" id="edit-item">Editar</button> --}}
+                                        {{-- <a href="{{route('reporte.edit', $gasto->id)}}" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
+                                        <button type="button" class="btn btn-success" id="edit-item">Editar</button> --}}
                                         <form action="{{route('reporte.destroy', $gasto->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button class="bi bi-trash3-fill text-danger show-confirm" data-toggle="tooltip" data-placement="top" title="Eliminar" id="delete-item" type="submit"></button>
                                         </form>
-                                        {{-- <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a> --}}
                                     </td>
                                 </tr>
                             @endforeach
