@@ -129,12 +129,10 @@
                                     <div class="col-sm-8">
                                         <div class="dropdown">
                                             <select name="Departamento" class="form-select">
-                                                <option value="0" selected>Seleccionar...</option>
-                                                <option value="1">Administración</option>
-                                                <option value="2">Recursos Humanos</option>
-                                                <option value="3">Marketing y Ventas</option>
-                                                <option value="4">Finanzas</option>
-                                                <option value="5">Desarrollo</option>
+                                                <option value="#" selected>Seleccionar...</option>
+                                                @foreach($departamentos as $departamento)
+                                                    <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -160,11 +158,11 @@
                                         <input type="text" class="form-control" autofocus required>
                                     </div>
                                 </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                                </div>
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Actualizar</button>
                         </div>
                     </div>
                 </div>
@@ -231,19 +229,18 @@
                         </div>
                         <div class="modal-body">
 
-                            <form action="#">
+                            <form action="{{route('reporte.store')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <!-- Departamento -->
                                 <div class="row mb-3">
                                     <label for="" class="col-sm-4 col-form-label">Departamento</label>
                                     <div class="col-sm-8">
                                         <div class="dropdown">
-                                            <select name="Departamento" class="form-select">
-                                                <option value="0" selected>Seleccionar...</option>
-                                                <option value="1">Administración</option>
-                                                <option value="2">Recursos Humanos</option>
-                                                <option value="3">Marketing y Ventas</option>
-                                                <option value="4">Finanzas</option>
-                                                <option value="5">Desarrollo</option>
+                                            <select name="departamento_id" class="form-select">
+                                                <option value="#" selected>Seleccionar...</option>
+                                                @foreach($departamentos as $departamento)
+                                                    <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -252,28 +249,28 @@
                                 <div class="row mb-3">
                                     <label for="" class="col-sm-4 col-form-label">Concepto</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" autofocus required>
+                                        <input type="text" name="concepto" class="form-control" autofocus required>
                                     </div>
                                 </div>
                                 <!-- Cantidad -->
                                 <div class="row mb-3">
                                     <label for="" class="col-sm-4 col-form-label">Cantidad</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" autofocus required>
+                                        <input type="number" name="cantidad" class="form-control" autofocus required>
                                     </div>
                                 </div>
                                 <!-- Costo total -->
                                 <div class="row mb-3">
                                     <label for="" class="col-sm-4 col-form-label">Costo total</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" autofocus required>
+                                        <input type="number" name="total" class="form-control" autofocus required>
                                     </div>
                                 </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Agregar</button>
+                                </div>
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Agregar</button>
                         </div>
                     </div>
                 </div>
