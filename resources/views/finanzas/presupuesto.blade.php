@@ -35,10 +35,6 @@
                     </form>
                 </div>
             </div>
-            <div class="d-flex float-left mr-5 mb-3">
-                <p>Visualizando presupuesto de: </p>
-            </div>
-
 
             <div class="text-center w-90 d-flex justify-content ml-5">
                 <table class="table table-striped table-hover table-bordered text-center ml-5 mt-5">
@@ -49,26 +45,12 @@
                         </tr>
                     </thead>
                     <tbody class="">
+                        @foreach($departamentos as $departamento)
                         <tr>
-                            <th scope="row">Administración</th>
-                            <td>$0.00</td>
+                            <td scope="row">{{$departamento->nombre}}</td>
+                            <td>{{$departamento->presupuesto}}</td>
                         </tr>
-                        <tr>
-                            <th scope="row">Recursos Humanos</th>
-                            <td>$0.00</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Marketing y Ventas</th>
-                            <td>$0.00</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Finanzas</th>
-                            <td>$0.00</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Desarrollo</th>
-                            <td>$0.00</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -116,20 +98,17 @@
                             </button>
                         </div>
                         <div class="modal-body">
-
-                            <form action="#">
+                            <form action="{{route('presupuesto.update', $departamento) }}">
                                 <!-- Departamento -->
                                 <div class="row mb-3">
                                     <label for="" class="col-sm-4 col-form-label">Departamento</label>
                                     <div class="col-sm-8">
                                         <div class="dropdown">
-                                        <select name="Departamento" class="form-select">
-                                            <option value="0" selected>Seleccionar...</option>
-                                            <option value="1">Administración</option>
-                                            <option value="2">Recursos Humanos</option>
-                                            <option value="3">Marketing y Ventas</option>
-                                            <option value="4">Finanzas</option>
-                                            <option value="5">Desarrollo</option>
+                                        <select name="id" class="form-select">
+                                            <option value="" selected>Seleccionar...</option>
+                                            @foreach($departamentos as $departamento)
+                                            <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
+                                            @endforeach
                                         </select>
                                         </div>
                                     </div>
@@ -138,14 +117,17 @@
                                 <div class="row mb-3">
                                     <label for="" class="col-sm-4 col-form-label">Presupuesto</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" autofocus required>
+                                        <input type="text" class="form-control" name="presupuesto" autofocus required>
+                                    </div>
+                                </div>
+                                <!-- Botones -->
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <button type="button" class="btn btn-danger mr-5" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-success">Actualizar</button>
                                     </div>
                                 </div>
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Actualizar</button>
                         </div>
                     </div>
                 </div>

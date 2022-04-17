@@ -12,5 +12,10 @@ class Departamentos extends Model
     protected $fillable = [
         'nombre',
         'presupuesto',
-        ];
+    ];
+
+    public function empleados()
+    {
+        return $this->hasMany(Empleado::class);
+    }
 }
