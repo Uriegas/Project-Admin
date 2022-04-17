@@ -40,20 +40,12 @@ class ReporteGastosController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     *  NOTE: Not necessary
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $request->validate([
-            'departamento_id' => 'required|numeric',
-            'concepto' => 'required|max:255',
-            'cantidad' => 'required|numeric',
-            'total' => 'required|decimal',
-        ]);
-        $gasto = Gastos::create($request->all());
-        $gasto->save();
-        return redirect()->route('reporte.index')->with('status', 'Gasto creado con éxito');
+        //
     }
 
     /**
@@ -77,7 +69,7 @@ class ReporteGastosController extends Controller
 
     /**
      * Display the specified resource.
-     *
+     * NOTE: Not necessary
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -88,7 +80,7 @@ class ReporteGastosController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * NOTE: Not necessary
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -106,7 +98,15 @@ class ReporteGastosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'departamento_id' => 'required|numeric',
+            'concepto' => 'required|max:255',
+            'cantidad' => 'required|numeric',
+            'total' => 'required|between:0,9999999999.99',
+        ]);
+        $gasto = Gastos::create($request->all());
+        $gasto->save();
+        return redirect()->route('reporte.index')->with('status', 'Gasto creado con éxito');
     }
 
     /**
@@ -118,5 +118,8 @@ class ReporteGastosController extends Controller
     public function destroy($id)
     {
         //
+        $gasto = Gastos::findOrFail($id);
+        $gasto->delete();
+        return redirect()->route('reporte.index')->with('status', 'Gasto eliminado con éxito');
     }
 }

@@ -64,7 +64,12 @@
                                     <td>{{$gasto->total}}</td>
                                     <td>
                                         <a href="" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
-                                        <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a>
+                                        <form action="{{route('reporte.destroy', $gasto->id)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="bi bi-trash3-fill text-danger show-confirm" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"></button>
+                                        </form>
+                                        {{-- <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a> --}}
                                     </td>
                                 </tr>
                             @endforeach
