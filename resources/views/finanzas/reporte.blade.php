@@ -50,34 +50,41 @@
                         </tr>
                     </thead>
                     <tbody class="">
+                        {{-- TODO: Not working when one departamento_id is not present --}}
                         @for($i = 0; $i < count($gastos_por_departamento); $i++)
                             @php
                                 $gastos = $gastos_por_departamento[$i];
                             @endphp
+                            @if(isset($gastos[0]->nombre))
                             <tr>
                                 <td colspan="4" class="table-info" style="text-align: left;">Departamento de {{$gastos[0]->nombre}}</td>
                             </tr>
                             @foreach($gastos as $gasto)
-                                <tr>
-                                    <th>{{$gasto->concepto}}</th>
-                                    <td>{{$gasto->cantidad}}</td>
-                                    <td>{{$gasto->total}}</td>
+                                <tr class="data-row">
+                                    <th id="concepto" name="concepto">{{$gasto->concepto}}</th>
+                                    <td id="cantidad" name="cantidad">{{$gasto->cantidad}}</td>
+                                    <td id="total" name="total">{{$gasto->total}}</td>
                                     <td>
-                                        <a href="" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
+                                        <a href="{{route('reporte.edit', $gasto->id)}}"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
+                                        {{-- <a href="{{route('reporte.edit', $gasto->id)}}" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a> --}}
+                                        {{-- <button type="button" class="btn btn-success" id="edit-item">Editar</button> --}}
                                         <form action="{{route('reporte.destroy', $gasto->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="bi bi-trash3-fill text-danger show-confirm" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"></button>
+                                            <button class="bi bi-trash3-fill text-danger show-confirm" data-toggle="tooltip" data-placement="top" title="Eliminar" id="delete-item" type="submit"></button>
                                         </form>
                                         {{-- <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a> --}}
                                     </td>
                                 </tr>
                             @endforeach
+                            @endif
+                            @if(isset($totales[$i]->total))
                             <tr>
                                 <th scope="row">Gasto total:</th>
                                 <td>-</td>
                                 <td colspan="2" style="text-align: right;">${{$totales[$i]->total}}</td>
                             </tr>
+                            @endif
                         @endfor
                     </tbody>
                 </table>
@@ -86,8 +93,6 @@
             <div class="d-flex float-right mr-5 mb-3">
                 <div class="mr-5">
                     <button type="button" class="btn bg-warning text-white mr-5"><i class="bi bi-file-earmark-pdf-fill mr-2 text-white" style="font-size: 18px;"></i>Ver PDF</button>
-                    <button type="button" class="btn btn-danger mr-5">Descartar</button>
-                    <button type="button" class="btn btn-success mr-5">Guardar</button>
                 </div>
             </div>
 
@@ -116,7 +121,7 @@
             </div>
 
             <!-- Modal editar -->
-            <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class= "modal-dialog modal-dialog-scrollable " role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -287,4 +292,42 @@
 @endsection
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
+<script>
+    $('#edit-item').click(function() {
+        var cantidad = $(this).attr('cantidad');
+        var total = $(this).attr('total');
+        var id = $(this).attr('id');
+        $('#edit-cantidad').val(cantidad);
+        $('#edit-total').val(total);
+        $('#edit-id').val(id);
+    })
+    document.getElementById('edit-modal').addEventListener('show.bs.modal', function(e){
+        console.log(e.relatedTarget);
+    });
+    // $(document).on('click', '#edit-item', function(){
+    //     $(this).addClass('edit-item-trigger-clicked');
+    //     // data-bs-toggle="modal" data-bs-target="#edit-modal"
+    //     // On click show #edit-modal with data from the record that was clicked
+    //     $('.edit-item-trigger-clicked').parents('tr').find('.text-primary').toggle();
+    //     // var id = $(this).data('item-id');
+    //     // var concepto = $(this).data('item-concepto');
+
+    //     // var options = {
+    //     //     'backdrop': 'static'
+    //     // };
+    //     // $('#edit-modal').modal(options)
+
+    //     // $('#edit-modal').on('show.bs.modal', function(){
+    //     //     var el = $(".edit-item-trigger-clicked");
+    //     //     var row = el.closest(".data-row");
+    //     // })
+
+    // })
+    // $('#edit-modal').on('hide.bs.modal', function() {
+    //     $('.edit-item-trigger-clicked').removeClass('edit-item-trigger-clicked')
+    //     $("#edit-form").trigger("reset");
+    // })
+</script>
