@@ -17,6 +17,7 @@ class ProyectosFactory extends Factory
     public function definition()
     {
         return [
+            'nombre' => $this->faker->name,
             'descripcion' => $this->faker->text,
             'cliente_id' => $this->faker->numberBetween(1, 10),
             'presupuesto' => $this->faker->randomFloat(2, 0, 100000),

@@ -12,23 +12,17 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
+    {  // Esta tabla es necesaria ya que hay una relacion muchos a muchos:
+       // para cada proyecto se asignan varios desarrollodores y
+       // cada desarrollador esta asignado a varios proyectos 
         Schema::create('proyectosequipo', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('proyecto_id');
-            $table->string('nombre_proyecto');
-            $table->string('nombre_cliente');
-            $table->string('presupuesto');
-            $table->string('integrantes');
-            $table->string('descripcion');
-      //->constrained('proyectos')
-      //->onUpdate('cascade')
-      //->onDelete('cascade');
-      $table->foreignId('empleado_id');
-      //->constrained('empleados')
-      //->onUpdate('cascade')
-      //->onDelete('cascade');
-      
+            $table->foreignId('proyecto_id')
+                ->constrained()
+                ->onDelete('cascade');
+            $table->foreignId('empleado_id')
+                ->constrained()
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
