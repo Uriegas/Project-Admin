@@ -11,4 +11,13 @@ class Proyectos extends Model
 
     protected $table = 'proyectos';
 
+    protected $fillable = [
+        'descripcion',
+        'cliente_id',
+        'presupuesto',
+        'presupuesto_id',
+        'inicio',
+        'fin',
+        'imagen'
+    ];
 }
