@@ -121,8 +121,8 @@ class DesarrolloController extends Controller
 
         $fechaInicio = date("Y-m-d", strtotime(str_replace('/', '-', $req->fechaInicio)));
         $fechaFin = date("Y-m-d", strtotime(str_replace('/', '-', $req->fechaFin)));
-        $sqlQuery = 'INSERT actividades_proyecto VALUES(null, ?, ?, ?, ?, ?, ?, ?, null, null)';
-        DB::insert($sqlQuery, [ $req->titulo,  $req->encargado,  $req->idTablero,  $fechaInicio,  $fechaFin,  $req->actividades,  $req->status]);
+        $sqlQuery = 'INSERT actividades_proyecto VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?, null, null)';
+        DB::insert($sqlQuery, [ $req->titulo, $req->descripcion, $req->encargado, $req->idTablero,  $fechaInicio,  $fechaFin,  $req->actividades,  $req->status]);
         
         $data = ["todo" => 1];
         

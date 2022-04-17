@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('actividades_proyecto', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
+            $table->text('descripcion');
             $table->foreignId('encargado')
             ->constrained('empleados')
             ->onUpdate('cascade')

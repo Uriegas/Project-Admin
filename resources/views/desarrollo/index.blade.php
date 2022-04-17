@@ -6,25 +6,29 @@
 @section('content')
 
 <!-- CABECERA -->
+<div class="page-header d-xl-flex d-block ml-5">
+    <div class="page-leftheader ml-5 mt-5">
+        <h4 class="page-title">Desarrollo</h4> 
+        <p style="font-size: 16px;" class="navbar-brand my-0">
+            <a class="navbar-brand mr-1" href="{{route('showAllTableros')}}" style="font-size: 16px; color: #979799;">Desarrollo</a> / Tableros
+        </p>
+    </div>
+    
+</div>
+
 <!-- FIN CABECERA -->
 
 <!-- CONTENIDO -->
-    <div>
-        <h2 style="margin-left:40px; margin-top: 40px;">Tableros</h2>
-        <nav class="navbar navbar-light bg-light" style="margin-top: -5px; margin-left: 40px;">
-            <p style="font-size: 16px;" class="navbar-brand"><a class="navbar-brand" href="{{url('/Desarrollo/')}}" style="font-size: 16px; color: #9568A9;">Dashboard</a>/  Tableros</p>
-        </nav>
-    </div>
-    <div style="margin-left: 85%">
-        <div>
-            <button type="button" class="btn btn-success al-auto" data-bs-toggle="modal" data-bs-target="#tar1"><i class="bi bi-plus" style="margin-right: 10px;"></i> Agregar tablero</button>
-        </div>
-    </div>
+       
+    
 
-    <div>
-        <div class="d-flex justify-content-center">
+    <div class="row dflex">   
+        <div class="container" style="margin: 0px; margin-left: 50px; ">
+            <button type="button" class="btn btn-success al-auto" data-bs-toggle="modal" data-bs-target="#tar1"><i class="bi bi-plus" style="margin-right: 10px;"></i> Agregar tablero</button>
+        </div> 
+        <div class="row d-flex justify-content-center">
             @foreach ($tableros as $tablero)
-                <div class="card" style="width: 18rem;">
+                <div class="card" style="width: 18rem; margin: 10px;">
                 <!--<img src="..." class="card-img-top" alt="...">-->
                     <div class="card-body">
                         <h5 class="card-title">{{$tablero->titulo}}</h5>
@@ -32,15 +36,14 @@
                         <!--<a href="#" class="btn btn-primary">Ver tarjeta</a>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Ampliar</button>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#proy1">Ver proyecto</button>-->
-                        <a href = "{{route('show.tablero', ['idTablero' => $tablero->id])}}"><input type="button" class="btn btn-primary" value="Ver tarjetas"></a>
-                        <button type="button" class="btn btn-secondary btnVerTablero" data-bs-toggle="modal" data-bs-target="#verTableroInfo" data-id="{{route('showTablero', ['idTablero' => $tablero->id])}}">Tablero Info</button>
-                        <button type="button" class="btn btn-danger btnEliminarTablero" data-id="{{route('eliminarTablero', ['idTablero' => $tablero->id])}}">Eliminar</button>
+                        <a href = "{{route('show.tablero', ['idTablero' => $tablero->id])}}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
+                        <button type="button" class="btn btn-secondary btnVerTablero" data-bs-toggle="modal" data-bs-target="#verTableroInfo" data-id="{{route('showTablero', ['idTablero' => $tablero->id])}}"><i class="bi bi-info-circle"></i></button>
+                        <button type="button" class="btn btn-danger btnEliminarTablero" data-id="{{route('eliminarTablero', ['idTablero' => $tablero->id])}}"><i class="bi bi-trash3"></i></button>
                     </div>
                 </div>
             @endforeach
         </div>
-    </div> 
-    
+    </div>    
     <!-- MODALES -->
     <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -69,33 +72,32 @@
     <!-- MODAL VER ACTIVIDAD/EDITAR -->
     <div class="modal fade" id="verTableroInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class= "modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tablero</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
+        <form id="formEditarTablero" method="POST" action="{{route('showAllTableros')}}">  
+            @csrf 
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Tablero</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                            Título: 
+                            <input type="text" id="verTableroTitulo" class="form-control" placeholder="Titulo" name="titulo" readonly>
+                            <input type="hidden" id="verTableroId" class="form-control" placeholder="Titulo" name="verTableroId" hidden><br>
+                            Nombre de proyecto:<br>
+                            <input type="text" id="verTableroProyecto" class="form-control" placeholder="Titulo" name="proyecto" readonly><br>
+                            Descripción: 
+                            <input type="descripcion" id="verTableroDescripcion" class="form-control" placeholder="Descripción" name="descripcion" readonly><br>
+                            Fecha de inicio: <input type="date" id="verTableroFechaInicio" name="fechaInicio" readonly><br><br>
+                            Fecha de finalización: <input type="date" id="verTableroFechaFin" name="fechaFin" readonly><br><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-secondary" id="btnEditarTablero"><i class="bi bi-pencil-square"></i><span> Editar tablero</span></button>
+                        <button type="button" class="btn btn-primary btnPermitirEdicionTablero"><i class="bi bi-pencil"></i><span> Permitir edición</span></button>                            
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <form id="formEditarTablero" method="POST" action="{{route('showAllTableros')}}">
-                    @csrf
-                        Título: 
-                        <input type="text" id="verTableroTitulo" class="form-control" placeholder="Titulo" name="titulo" readonly>
-                        <input type="hidden" id="verTableroId" class="form-control" placeholder="Titulo" name="verTableroId" hidden><br>
-                        Nombre de proyecto:<br>
-                        <input type="text" id="verTableroProyecto" class="form-control" placeholder="Titulo" name="proyecto" readonly><br>
-                        Descripción: 
-                        <input type="descripcion" id="verTableroDescripcion" class="form-control" placeholder="Descripción" name="descripcion" readonly><br>
-                        Fecha de inicio: <input type="date" id="verTableroFechaInicio" name="fechaInicio" readonly><br><br>
-                        Fecha de finalización: <input type="date" id="verTableroFechaFin" name="fechaFin" readonly><br><br>
-                        <button type="button" class="btn btn-primary btnPermitirEdicionTablero">Permitir edición</button>
-                        <button type="submit" class="btn btn-secondary" id="btnEditarTablero">Editar tablero</button>
-                        </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -232,7 +234,7 @@
             {
                 event.preventDefault();
 
-                $(this).text('Cancelar edición');
+                $(this).find('span').text(' Cancelar edición');
 
                 if($('#btnEditarTablero').is(":visible"))
                 {
@@ -243,7 +245,7 @@
                     $('#verTableroDescripcion').attr('readonly', true);
                     $('#verTableroFechaFin').attr('readonly', true);
 
-                    $(this).text('Permitir edicón');
+                    $(this).find('span').text(' Permitir edición');
                 }
                 else
                 {

@@ -27,9 +27,9 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">{{$actividad->titulo}}</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button type="button" class="btn btn-primary btnVerActividad" data-bs-toggle="modal" data-bs-target="#verActividad" data-id="{{route('show.actividad', ['idTablero' => $idTablero, 'idActividad' => $actividad->id])}}">Abrir</button>
-                        <button type="button" class="btn btn-danger btnEliminarActividad" data-id="{{route('eliminarActividadTablero', ['idActividad' => $actividad->id])}}">Eliminar</button>
+                        <p class="card-text">{{$actividad->descripcion}}</p>
+                        <button type="button" class="btn btn-primary btnVerActividad" data-bs-toggle="modal" data-bs-target="#verActividad" data-id="{{route('show.actividad', ['idTablero' => $idTablero, 'idActividad' => $actividad->id])}}"><i class="bi bi-eye"></i></button>
+                        <button type="button" class="btn btn-danger btnEliminarActividad" data-id="{{route('eliminarActividadTablero', ['idActividad' => $actividad->id])}}"><i class="bi bi-trash3"></i></button>
                     </div>
                 </div>
             @endforeach    
@@ -66,49 +66,49 @@
     <!-- MODAL VER ACTIVIDAD/EDITAR -->
     <div class="modal fade" id="verActividad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class= "modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tarjeta de Actividad</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
+        <form id="formEditarActividad" method="POST" action="{{route('show.tablero', ['idTablero' => $idTablero])}}">
+            @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Tarjeta de Actividad</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        
+                            Título: 
+                            <input type="text" id="verActividadTitulo" class="form-control" placeholder="Titulo" name="titulo" readonly>
+                            <input type="hidden" id="verActividadId" class="form-control" placeholder="Titulo" name="verActividadId" hidden><br>
+                            Descripción:
+                            <textarea class="form-control" placeholder="Descripción" id="verActividadDescripcion" name="descripcion" rows="3" readonly></textarea><br>
+                            Encargado: <br>
+                            <input type="descripcion" id="verActividadEncargado" class="form-control" placeholder="Descripción" name="encargado" readonly><br>
+                            </ul>
+                            Fecha de inicio: <input type="date" id="verActividadFechaInicio" name="fechaInicio" readonly><br><br>
+                            Fecha de finalización: <input type="date" id="verActividadFechaFin" name="fechaFin" readonly><br><br>
+                            Actividades a realizar: 
+                            <input type="actividades" id="verActividadActividades" class="form-control" placeholder="Actividades" name="actividades" readonly><br>
+                            Status: <br>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="verActividadStatusDesarrollo" name="status" value="0">En desarrollo
+                                <label class="form-check-label" for="verActividadStatusDesarrollo"></label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="verActividadStatusRevision" name="status" value="1">En revisión
+                                <label class="form-check-label" for="verActividadStatusRevision"></label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="verActividadStatusTerminado" name="status" value="2">Terminado
+                                <label class="form-check-label" for="verActividadStatusTerminado"></label>
+                            </div>                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-secondary" id="btnEditarActividad"><i class="bi bi-pencil-square"></i><span> Editar actividad</button>
+                        <button type="button" class="btn btn-primary btnPermitirEdicionActividad"><i class="bi bi-pencil"></i><span> Permitir edición</button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <form id="formEditarActividad" method="POST" action="{{route('show.tablero', ['idTablero' => $idTablero])}}">
-                    @csrf
-                        Título: 
-                        <input type="text" id="verActividadTitulo" class="form-control" placeholder="Titulo" name="titulo" readonly>
-                        <input type="hidden" id="verActividadId" class="form-control" placeholder="Titulo" name="verActividadId" hidden><br>
-                        Descripción: 
-                        <input type="descripcion" id="desc1" class="form-control" placeholder="Descripción" name="descripcion"><br>
-                        Encargado: <br>
-                        <input type="descripcion" id="verActividadEncargado" class="form-control" placeholder="Descripción" name="encargado" readonly><br>
-                        </ul>
-                        Fecha de inicio: <input type="date" id="verActividadFechaInicio" name="fechaInicio" readonly><br><br>
-                        Fecha de finalización: <input type="date" id="verActividadFechaFin" name="fechaFin" readonly><br><br>
-                        Actividades a realizar: 
-                        <input type="actividades" id="verActividadActividades" class="form-control" placeholder="Actividades" name="actividades" readonly><br>
-                        Status: <br>
-                        <div class="form-check">
-                            <input type="radio" class="form-check-input" id="verActividadStatusDesarrollo" name="status" value="0">En desarrollo
-                            <label class="form-check-label" for="verActividadStatusDesarrollo"></label>
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" class="form-check-input" id="verActividadStatusRevision" name="status" value="1">En revisión
-                            <label class="form-check-label" for="verActividadStatusRevision"></label>
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" class="form-check-input" id="verActividadStatusTerminado" name="status" value="2">Terminado
-                            <label class="form-check-label" for="verActividadStatusTerminado"></label>
-                        </div>
-                        <button type="button" class="btn btn-primary btnPermitirEdicionActividad">Permitir edición</button>
-                        <button type="submit" class="btn btn-secondary" id="btnEditarActividad">Editar actividad</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -128,8 +128,8 @@
                             Título: 
                             <input type="text" id="desc1" class="form-control" placeholder="Titulo" name="titulo">
                             <input type="hidden" id="desc1" class="form-control" placeholder="Titulo" name="idTablero" value="{{$idTablero}}"><br>
-                            Descripción: 
-                            <input type="descripcion" id="desc1" class="form-control" placeholder="Descripción" name="descripcion"><br>
+                            Descripción:
+                            <textarea class="form-control" placeholder="Descripción" name="descripcion" rows="3"></textarea><br>
                             Encargado: <br>
                             <select id="disabledSelect" class="form-select" name="encargado">
                                 <option selected>Seleccione el encargado</option>
@@ -254,6 +254,7 @@
                     {
                         response = JSON.parse(response);
                         $('#verActividadTitulo').val(response.actividad.titulo);
+                        $('#verActividadDescripcion').val(response.actividad.descripcion);
                         $('#verActividadEncargado').val(response.actividad.nombreEmpleado);
                         $('#verActividadFechaInicio').val(response.actividad.inicio);
                         $('#verActividadFechaFin').val(response.actividad.fin);
@@ -310,23 +311,26 @@
                 {
                     event.preventDefault();
 
-                    $(this).text('Cancelar edición');
+                    $(this).find('span').text(' Cancelar edición');
 
                     if($('#btnEditarActividad').is(":visible"))
                     {
                         $('#btnEditarActividad').hide();
                         $('#verActividadTitulo').attr('readonly', true);
+                        $('#verActividadDescripcion').attr('readonly', true);
                         $('#verActividadActividades').attr('readonly', true);
                         $('#verActividadStatusDesarrollo').attr('disabled', true);
                         $('#verActividadStatusRevision').attr('disabled', true);
                         $('#verActividadStatusTerminado').attr('disabled', true);
                         $('#verActividadFechaFin').attr('readonly', true);
-                        $(this).text('Permitir edición');
+                        
+                        $(this).find('span').text(' Permitir edición');
                     }
                     else
                     {
                         $('#btnEditarActividad').show();
                         $('#verActividadTitulo').attr('readonly', false);
+                        $('#verActividadDescripcion').attr('readonly', false);
                         $('#verActividadActividades').attr('readonly', false);
                         $('#verActividadStatusDesarrollo').attr('disabled', false);
                         $('#verActividadStatusRevision').attr('disabled', false);
