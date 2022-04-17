@@ -19,26 +19,28 @@ class ReporteGastosController extends Controller
         $gastos = [];
         for($i=0;$i<Departamentos::count();$i++){
             $gastos[$i] = DB::table('gastos')
+                  ->orderBy('gastos.departamento_id', 'desc')
                   ->join('departamentos', 'gastos.departamento_id', '=', 'departamentos.id')
                   ->where('departamentos.id', '=', $i+1)
                   ->select('gastos.*', 'departamentos.nombre')
-                  ->orderBy('gastos.id', 'desc')
                   ->get();
         }
         $totales = DB::table('gastos')
-                    ->selectRaw('SUM(cantidad * total ) as total')
-                    ->orderBy('departamento_id', 'desc')
                     ->groupBy('departamento_id')
-                  ->get();
+                    ->orderBy('departamento_id', 'asc')
+                    ->selectRaw('SUM(cantidad * total ) as total')
+                    ->get();
+        $departamentos = Departamentos::all();
         return view('finanzas.reporte', [
             'gastos_por_departamento' => $gastos,
-            'totales' => $totales
+            'totales' => $totales,
+            'departamentos' => $departamentos
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
-     *
+     *  NOTE: Not necessary
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -54,12 +56,20 @@ class ReporteGastosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'departamento_id' => 'required|numeric',
+            'concepto' => 'required|max:255',
+            'cantidad' => 'required|numeric',
+            'total' => 'required|between:0,9999999999.99',
+        ]);
+        $gasto = Gastos::create($request->all());
+        $gasto->save();
+        return redirect()->route('reporte.index')->with('status', 'Gasto creado con éxito');
     }
 
     /**
      * Display the specified resource.
-     *
+     * NOTE: Not necessary
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -70,7 +80,7 @@ class ReporteGastosController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * NOTE: Not necessary
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -88,7 +98,15 @@ class ReporteGastosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'departamento_id' => 'required|numeric',
+            'concepto' => 'required|max:255',
+            'cantidad' => 'required|numeric',
+            'total' => 'required|between:0,9999999999.99',
+        ]);
+        $gasto = Gastos::create($request->all());
+        $gasto->save();
+        return redirect()->route('reporte.index')->with('status', 'Gasto creado con éxito');
     }
 
     /**
@@ -100,5 +118,8 @@ class ReporteGastosController extends Controller
     public function destroy($id)
     {
         //
+        $gasto = Gastos::findOrFail($id);
+        $gasto->delete();
+        return redirect()->route('reporte.index')->with('status', 'Gasto eliminado con éxito');
     }
 }
