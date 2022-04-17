@@ -1,36 +1,56 @@
-@extends('layouts.app')
+@extends('administracion.layout')
 
 @section('content')
-
-<!-- CABECERA -->
-<div class="page-header d-xl-flex d-block" style="margin-top:200px;">
-    <div class="page-leftheader" style="margin-top:200px;" >
-        <h4 class="page-title">Dashboard1</h4>
-    </div>
-    {{-- DESCOMENTAR DIV PARA MOSTRAR BOTON DE AGREGAR --}}
-    {{-- <div class="page-rightheader ml-md-auto">
-        <div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
-            <div class="btn-list" style="margin-top:100px;">
-                <a href="#" class="btn btn-primary mr-3">
-                    Agregar cosa</a>
+<div class="pull-left">
+        <h2>Administración</h2>
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            
+            <div class="pull-right">
+                    
             </div>
-        </div> --}}
+        </div>
     </div>
-</div>
-<!-- FIN CABECERA -->
-
-
-
-
-<!-- CONTENIDO -->
-<div class="row">
-    <div class="col-xl-12 col-md-12 col-lg-12">
         
-        {{-- 
-            AQUI VA EL CONTENIDO DE LA VISTA 
-        --}}
-    
+        @if($message = Session::get('success'))
+
+        <div class="alert alert-success">
+            <p>{{$message}}</p>
+        </div>
+        @endif
+
+        <table class="table table bordered">
+            <tr>
+                <th>ID</th>
+                <th>Nombre del Proyecto</th>
+                <th>Nombre del cliente</th>
+                <th>Presupuesto</th>
+                <th>Integrantes</th>
+                <th>Descripción</th>
+                <th width="280px">Acción</th>
+            </tr>
+            @foreach($proyectos as $proyecto)
+            <tr>
+                <td>{{++$i}}</td>
+                <td>{{$proyecto->nombre_proyecto}}</td>
+                <td>{{$proyecto->nombre_cliente}}</td>
+                <td>{{$proyecto->presupuesto}}</td>
+                <td>{{$proyecto->integrantes}}</td>
+                <td>{{$proyecto->descripcion}}</td>
+                <td>
+                    <form action="{{route('proyectos.destroy',$proyecto->id)}}" method ="POST">
+                        <a class="btn btn-info" href="{{ route('proyectos.show', $proyecto->id)}}">Mostrar</a>
+                        <a class="btn btn-primary" href="{{ route('proyectos.edit', $proyecto->id)}}">Editar</a>
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            
+            @endforeach
+
+        </table>
+
     </div>
-</div>
-<!-- FIN CONTENIDO -->
 @endsection
