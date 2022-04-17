@@ -28,7 +28,7 @@ class ReporteGastosController extends Controller
         $totales = DB::table('gastos')
                     ->groupBy('departamento_id')
                     ->orderBy('departamento_id', 'asc')
-                    ->selectRaw('SUM(cantidad * total ) as total')
+                    ->selectRaw('SUM(cantidad * total ) as total, departamento_id as id')
                     ->get();
         $departamentos = Departamentos::all();
         return view('finanzas.reporte', [
@@ -75,7 +75,9 @@ class ReporteGastosController extends Controller
      */
     public function show($id)
     {
-        //
+        // Return json with the gasto
+        $gasto = Gastos::find($id);
+        return response()->json($gasto);
     }
 
     /**
@@ -86,7 +88,10 @@ class ReporteGastosController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('finanzas.reporte_edit', [
+            'gasto' => Gastos::findOrFail($id),
+            'departamentos' => Departamentos::all()
+        ]);
     }
 
     /**
@@ -104,9 +109,11 @@ class ReporteGastosController extends Controller
             'cantidad' => 'required|numeric',
             'total' => 'required|between:0,9999999999.99',
         ]);
-        $gasto = Gastos::create($request->all());
+        $gasto = Gastos::findOrFail($id);
+        $gasto->update($request->all());
         $gasto->save();
-        return redirect()->route('reporte.index')->with('status', 'Gasto creado con éxito');
+        
+        return redirect()->route('reporte.index')->with('status', 'Gasto actualizado con éxito');
     }
 
     /**
