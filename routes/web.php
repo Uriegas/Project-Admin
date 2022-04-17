@@ -8,6 +8,7 @@ use App\Http\Controllers\FinanzasController;
 use App\Http\Controllers\MarkVenController;
 use App\Http\Controllers\RHController;
 use App\Http\Controllers\PresupuestoController;
+use App\Http\Controllers\ReporteGastosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,11 +92,10 @@ Route::get('/recursos-humanos/evaluaciones', function () {
 
     // Rutas Finanzas
 
-    Route::resource('/presupuesto', PresupuestoController::class);
-
-    Route::get('/reporte', function () {
-        return view('finanzas/reporte');
-    });
+    Route::resources([
+        '/presupuesto' => PresupuestoController::class,
+        '/reporte' => ReporteGastosController::class,
+    ]);
     
     Route::get('/cotizacion', function () {
         return view('finanzas/cotizacion');

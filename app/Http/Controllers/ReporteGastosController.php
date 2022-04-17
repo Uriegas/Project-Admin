@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Departamentos;
 use Illuminate\Http\Request;
+use App\Models\Gastos;
+use Illuminate\Support\Facades\DB;
 
 class ReporteGastosController extends Controller
 {
@@ -13,7 +16,18 @@ class ReporteGastosController extends Controller
      */
     public function index()
     {
-        //
+        $gastos = [];
+        for($i=0;$i<Departamentos::count();$i++){
+            $gastos[$i] = DB::table('gastos')
+                  ->join('departamentos', 'gastos.departamento_id', '=', 'departamentos.id')
+                  ->where('departamentos.id', '=', $i+1)
+                  ->select('gastos.*', 'departamentos.nombre')
+                  ->orderBy('gastos.id', 'desc')
+                  ->get();
+        }
+        return view('finanzas.reporte', [
+            'gastos_por_departamento' => $gastos,
+        ]);
     }
 
     /**

@@ -38,9 +38,6 @@
                     <button type="button" class="btn btn-success mr-5" data-bs-toggle="modal" data-bs-target="#agregar"><i class="bi bi-plus mr-1"></i> Agregar</button>
                 </div>
             </div>
-            <div class="d-flex float-left mr-5 mb-3">
-                <p>Visualizando presupuesto de: </p>
-            </div>
 
             <div class="text-center w-90 d-flex justify-content ml-5">
                 <table class="table table-striped table-hover table-bordered text-center ml-5 mt-5">
@@ -53,91 +50,27 @@
                         </tr>
                     </thead>
                     <tbody class="">
-                        <tr>
-                            <td colspan="4" class="table-info" style="text-align: left;">Departamento de Administración</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Cartuchos para impresora</th>
-                            <td>10</td>
-                            <td>$12,000.00</td>
-                            <td>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Gasto total:</th>
-                            <td>-</td>
-                            <td colspan="2" style="text-align: right;">$12,000.00</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="table-info" style="text-align: left;">Departamento de Recursos Humanos</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Cartuchos para impresora</th>
-                            <td>10</td>
-                            <td>$12,000.00</td>
-                            <td>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Gasto total:</th>
-                            <td>-</td>
-                            <td colspan="2" style="text-align: right;">$12,000.00</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="table-info" style="text-align: left;">Departamento de Marketing y Ventas</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Cartuchos para impresora</th>
-                            <td>10</td>
-                            <td>$12,000.00</td>
-                            <td>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Gasto total:</th>
-                            <td>-</td>
-                            <td colspan="2" style="text-align: right;">$12,000.00</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="table-info" style="text-align: left;">Departamento de Finanzas</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Cartuchos para impresora</th>
-                            <td>10</td>
-                            <td>$12,000.00</td>
-                            <td>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Gasto total:</th>
-                            <td>-</td>
-                            <td colspan="2" style="text-align: right;">$12,000.00</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="table-info" style="text-align: left;">Departamento de Desarrollo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Cartuchos para impresora</th>
-                            <td>10</td>
-                            <td>$12,000.00</td>
-                            <td>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Gasto total:</th>
-                            <td>-</td>
-                            <td colspan="2" style="text-align: right;">$12,000.00</td>
-                        </tr>
+                        @foreach($gastos_por_departamento as $gastos)
+                            <tr>
+                                <td colspan="4" class="table-info" style="text-align: left;">Departamento de {{$gastos[0]->nombre}}</td>
+                            </tr>
+                            @foreach($gastos as $gasto)
+                                <tr>
+                                    <th>{{$gasto->concepto}}</th>
+                                    <td>{{$gasto->cantidad}}</td>
+                                    <td>{{$gasto->total}}</td>
+                                    <td>
+                                        <a href="" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
+                                        <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            <tr>
+                                <th scope="row">Gasto total:</th>
+                                <td>-</td>
+                                <td colspan="2" style="text-align: right;">$12,000.00</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
