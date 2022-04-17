@@ -50,7 +50,10 @@
                         </tr>
                     </thead>
                     <tbody class="">
-                        @foreach($gastos_por_departamento as $gastos)
+                        @for($i = 0; $i < count($gastos_por_departamento); $i++)
+                            @php
+                                $gastos = $gastos_por_departamento[$i];
+                            @endphp
                             <tr>
                                 <td colspan="4" class="table-info" style="text-align: left;">Departamento de {{$gastos[0]->nombre}}</td>
                             </tr>
@@ -68,9 +71,9 @@
                             <tr>
                                 <th scope="row">Gasto total:</th>
                                 <td>-</td>
-                                <td colspan="2" style="text-align: right;">$12,000.00</td>
+                                <td colspan="2" style="text-align: right;">${{$totales[$i]->total}}</td>
                             </tr>
-                        @endforeach
+                        @endfor
                     </tbody>
                 </table>
             </div>

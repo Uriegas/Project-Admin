@@ -25,8 +25,14 @@ class ReporteGastosController extends Controller
                   ->orderBy('gastos.id', 'desc')
                   ->get();
         }
+        $totales = DB::table('gastos')
+                    ->selectRaw('SUM(cantidad * total ) as total')
+                    ->orderBy('departamento_id', 'desc')
+                    ->groupBy('departamento_id')
+                  ->get();
         return view('finanzas.reporte', [
             'gastos_por_departamento' => $gastos,
+            'totales' => $totales
         ]);
     }
 
