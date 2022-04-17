@@ -119,7 +119,7 @@
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-body"> <!-- Se cambia el src de la imagen -->
-                        <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="img-fluid d-block w-100" alt="...">
+                    <img src="{{ asset('storage').'/'.$estrategia['imagen'] }}" class="img-fluid d-block w-100" alt="...">
                     </div>
                 </div>
             </div>
