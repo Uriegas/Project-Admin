@@ -9,15 +9,15 @@ class AdministracionController extends Controller
 {
    public function index() {
        $proyectos = Proyectos::latest()->paginate(5);
-       return view('administracion.index',compact('proyectos'))
-            ->with('i', (request()->input('page',1) -1 ) * 5);
+       return view('administracion.index',compact('proyectos'));
+            /* ->with('i', (request()->input('page',1) -1 ) * 5); */
    }
 
    public function create() {
        return view('administracion.crear');
    }
 
-   public function store(Request $request) {
+  /*  public function store(Request $request) {
         $request->validate([
             'nombre_proyecto' => 'required',
             'nombre_cliente' => 'required',
@@ -30,17 +30,17 @@ class AdministracionController extends Controller
 
         return redirect()->route('administracion.index')
             ->with('success','Proyectos creados satisfactoriamente.');
-   }
+   } */
 
-   public function show(Proyectos $proyecto) {
+   /* public function show(Proyectos $proyecto) {
        return view('administracion.mostrar', compact('proyectos'));
-   }
+   } */
 
-   public function edit(Proyectos $proyecto) {
+  /*  public function edit(Proyectos $proyecto) {
         return view('administracion.editar',compact('proyectos'));
-   }
+   } */
 
-   public function update(Request $request, Proyectos $proyecto) {
+   /* public function update(Request $request, Proyectos $proyecto) {
        $request->validate([
 
        ]);
@@ -49,12 +49,12 @@ class AdministracionController extends Controller
 
        return redirect()->route('administracion.index')
             ->with('success','Proyecto modificado satisfactoriamente');
-   }
+   } */
 
-   public function destroy(Proyectos $proyecto) {
+   /* public function destroy(Proyectos $proyecto) {
        $proyecto->delete();
        return redirect()->route('administracion.index')
             ->with('success','Proyecto eliminado satisfactiramente');
-   }
+   } */
 }
  

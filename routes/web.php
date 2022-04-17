@@ -21,10 +21,10 @@ use App\Http\Controllers\ReporteGastosController;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('home');
 })->name('index');
-
+ */
 Route::get('/recursos-humanos/empleados', function () {
     return view('recursos-humanos/empleados.index');
 })->name('Lista Empleados');
@@ -32,7 +32,16 @@ Route::get('/recursos-humanos/evaluaciones', function () {
     return view('recursos-humanos.evaluaciones');
 })->name('Lista Evaluaciones');
 
-   /*  Route::group(['middleware' => ['auth']], function (){  */
+/* Route::middleware(['auth'])->group( function () {
+
+    Route::resource('administracion', AdministracionController::class);
+    Route::resource('desarrollo', DesarrolloController::class);
+    Route::resource('finanzas', FinanzasController::class);
+    Route::resource('mrk-ventas', MarkVenController::class);
+    Route::resource('recursos-humanos', RHController::class);
+});
+ */
+    Route::group(['middleware' => ['auth']], function (){ 
 
     Route::resource('administracion', AdministracionController::class);
 
@@ -43,7 +52,7 @@ Route::get('/recursos-humanos/evaluaciones', function () {
     Route::resource('mrk-ventas', MarkVenController::class);
 
     Route::resource('recursos-humanos', RHController::class);
-    /* });  */
+    }); 
 
     Route::get('recursos-humanos/empleados', [EmpleadoController::class,'index']);
     
@@ -129,7 +138,7 @@ Route::get('/recursos-humanos/evaluaciones', function () {
     //**************************************** */
 
     
-
+Route::get('/', [HomeController::class, 'index']);
  Auth::routes(); 
 
 Auth::routes();

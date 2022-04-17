@@ -70,11 +70,7 @@
 
     <br><br><br><br>
 
-<<<<<<< HEAD
     <div class="row" style="margin-top:100px;">
-=======
-    <div class="row">
->>>>>>> 1c71bab68a9ee3f54f26e16c91d087922fe9405d
     <div class="col-xl-12 col-md-12 col-lg-12 text-center justify-content-center justify-content">
         <div class="text-center justify-content-center justify-content ml-5">
             <div class="row text-center justify-content-center justify-content">
@@ -109,7 +105,7 @@
                     </div>
                 </div>
                 
-                <div class="col-5">
+                <!-- <div class="col-5">
                     <div class="text-black mb-3">
                         <div class="card-body">
                             <br><br>
@@ -119,7 +115,7 @@
                             <br><br><br><br><br>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>

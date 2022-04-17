@@ -1,4 +1,5 @@
 @extends('administracion.layout')
+@extends('layouts.app')
 
 @section('content')
 <div class="pull-left">
@@ -31,20 +32,13 @@
             </tr>
             @foreach($proyectos as $proyecto)
             <tr>
-                <td>{{++$i}}</td>
+                <td>{{$proyecto->id}}</td>
                 <td>{{$proyecto->nombre_proyecto}}</td>
                 <td>{{$proyecto->nombre_cliente}}</td>
                 <td>{{$proyecto->presupuesto}}</td>
                 <td>{{$proyecto->integrantes}}</td>
                 <td>{{$proyecto->descripcion}}</td>
                 <td>
-                    <form action="{{route('proyectos.destroy',$proyecto->id)}}" method ="POST">
-                        <a class="btn btn-info" href="{{ route('proyectos.show', $proyecto->id)}}">Mostrar</a>
-                        <a class="btn btn-primary" href="{{ route('proyectos.edit', $proyecto->id)}}">Editar</a>
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                    </form>
                 </td>
             </tr>
             

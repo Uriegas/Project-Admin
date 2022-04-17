@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nombre Completo') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -40,7 +40,29 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="departamento_id" class="col-md-4 col-form-label text-md-end">{{ __('Nombre del departamento') }}</label>
+
+                            <div class="col-md-6">
+                                <!-- <input id="departamento_id" type="text" class="form-control @error('departamento_id') is-invalid @enderror" name="departamento_id" value="{{ old('departamento_id') }}" required autocomplete="departamento_id">
+                             -->
+                                <select id="disabledSelect" class="form-select" name="departamento_id">
+                                    <option selected>Seleccione un Departamento</option>
+                                    <option value="1">Administracion</option>
+                                    <option value="2">Finanzas</option>
+                                    <option value="3">Recursos Humanos</option>
+                                    <option value="4">Desarrollo</option>
+                                    <option value="5">Marketing y Ventas </option>
+                                </select>
+                                <!-- @error('departamento_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror -->
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">

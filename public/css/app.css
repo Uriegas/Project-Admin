@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
+@import url(https://fonts.googleapis.com/css?family=Nunito);
 @charset "UTF-8";
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
@@ -629,7 +629,6 @@ progress {
 .container-lg,
 .container-md,
 .container-sm {
-
   width: 100%;
   padding-right: var(--bs-gutter-x, 0.75rem);
   padding-left: var(--bs-gutter-x, 0.75rem);
@@ -4505,7 +4504,8 @@ textarea.form-control-lg {
 }
 
 .card {
-  margin-top: 500px;
+  position: relative;
+  display: flex;
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
@@ -6618,7 +6618,7 @@ textarea.form-control-lg {
   bottom: 0;
   left: 0;
   z-index: 1;
-  content: ""; 
+  content: "";
 }
 
 .text-truncate {
