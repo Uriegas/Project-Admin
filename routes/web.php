@@ -21,13 +21,19 @@ use App\Http\Controllers\CotizacionController;
 |
 */
 
+Route::get('/recursos-humanos/empleados', function () {
+    return view('recursos-humanos/empleados.index');
+})->name('Lista Empleados');
+Route::get('/recursos-humanos/evaluaciones', function () {
+    return view('recursos-humanos.evaluaciones');
+})->name('Lista Evaluaciones');
 
 Route::get('/', function () {
     return view('home');
 })->name('index');
 
-
-Route::group(['middleware' => ['auth']], function (){
+/* 
+Route::group(['middleware' => ['auth']], function (){ */
     Route::get('/users',[UserController::class,'index']);
 
     Route::resource('administracion', AdministracionController::class);
@@ -39,7 +45,8 @@ Route::group(['middleware' => ['auth']], function (){
     Route::resource('mrk-ventas', MarkVenController::class);
 
     Route::resource('recursos-humanos', RHController::class);
-   });
+/*    }); */
+
 
     Route::get('recursos-humanos/empleados', [EmpleadoController::class,'index']);
     
@@ -114,10 +121,7 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('desarrollo/tablero/{idTablero}', [DesarrolloController::class, 'showTablero'])->name('showTablero');
     Route::post('desarrollo/editarTablero', [DesarrolloController::class, 'editarTablero'])->name('editarTablero');
     Route::get('desarrollo/eliminarTablero/{idTablero}', [DesarrolloController::class, 'eliminarTablero'])->name('eliminarTablero');
+    //Route::get('desarrollo/tablero')
     //**************************************** */
-
-
-
-/* Auth::routes(); */
 
 Auth::routes();
