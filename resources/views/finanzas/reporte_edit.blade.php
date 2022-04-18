@@ -18,68 +18,70 @@
 <!-- CONTENIDO -->
 <div class="row">
 	<div class="col-xl-12 col-md-12 col-lg-12">
-		<div class="card">
-        <form action="{{ route('reporte.update', $gasto->id) }}" method="POST" enctype="multipart/form-data">
-        @method('PUT')
-        @csrf
-			<div class="card-header d-xl-flex d-block">
-				<div class="card-leftheader">
-					<h4 class="card-title" id="impuestos">Información del Producto</h4>
-				</div>
-			</div>
-			<div class="card-body text-center">
-				<div class="col-sm-12">
-                                <div class="row mb-3">
-                                    <label for="" class="col-sm-4 col-form-label">Departamento</label>
-                                    <div class="col-sm-8">
-                                        <div class="dropdown">
-                                            <select name="departamento_id" id="concepto" class="form-select">
-                                                @foreach($departamentos as $departamento)
-                                                    @if($departamento->id == $gasto->departamento_id)
-                                                        <option value="{{$departamento->id}}" selected>{{$departamento->nombre}}</option>
-                                                    @else
-                                                    <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
+        <div class="text-center w-90 d-flex justify-content ml-5">
+            <div class="card">
+            <form action="{{ route('reporte.update', $gasto->id) }}" method="POST" enctype="multipart/form-data">
+            @method('PUT')
+            @csrf
+                <div class="card-header d-xl-flex d-block">
+                    <div class="card-leftheader">
+                        <h4 class="card-title" id="impuestos">Información del Producto</h4>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <div class="col-sm-12">
+                                    <div class="row mb-3">
+                                        <label for="" class="col-sm-4 col-form-label">Departamento</label>
+                                        <div class="col-sm-8">
+                                            <div class="dropdown">
+                                                <select name="departamento_id" id="concepto" class="form-select">
+                                                    @foreach($departamentos as $departamento)
+                                                        @if($departamento->id == $gasto->departamento_id)
+                                                            <option value="{{$departamento->id}}" selected>{{$departamento->nombre}}</option>
+                                                        @else
+                                                        <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- Concepto -->
-                                <div class="row mb-3">
-                                    <label for="" class="col-sm-4 col-form-label">Concepto</label>
-                                    <div class="col-sm-8">
-                                        <input id="concepto" name="concepto" type="text" value="{{$gasto->concepto}}" class="form-control" autofocus required>
+                                    <!-- Concepto -->
+                                    <div class="row mb-3">
+                                        <label for="" class="col-sm-4 col-form-label">Concepto</label>
+                                        <div class="col-sm-8">
+                                            <input id="concepto" name="concepto" type="text" value="{{$gasto->concepto}}" class="form-control" autofocus required>
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- Cantidad -->
-                                <div class="row mb-3">
-                                    <label for="" class="col-sm-4 col-form-label">Cantidad</label>
-                                    <div class="col-sm-8">
-                                        <input name="cantidad" id="cantidad" type="text" value="{{$gasto->cantidad}}" class="form-control" autofocus required>
+                                    <!-- Cantidad -->
+                                    <div class="row mb-3">
+                                        <label for="" class="col-sm-4 col-form-label">Cantidad</label>
+                                        <div class="col-sm-8">
+                                            <input name="cantidad" id="cantidad" type="text" value="{{$gasto->cantidad}}" class="form-control" autofocus required>
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- Costo total -->
-                                <div class="row mb-3">
-                                    <label for="" class="col-sm-4 col-form-label">Costo total</label>
-                                    <div class="col-sm-8">
-                                        <input name="total" id="total" type="text" value="{{$gasto->total}}" class="form-control" autofocus required>
+                                    <!-- Costo total -->
+                                    <div class="row mb-3">
+                                        <label for="" class="col-sm-4 col-form-label">Costo total</label>
+                                        <div class="col-sm-8">
+                                            <input name="total" id="total" type="text" value="{{$gasto->total}}" class="form-control" autofocus required>
+                                        </div>
                                     </div>
-                                </div>
-				</div>
-			</div>
-            <div class="card-footer text-right">
-                <a role="button" class="btn btn-outline-dark" href="{{ url()->previous() }}">
-                    <i class="feather feather-corner-down-left sidemenu_icon"></i>
-                    Regresar
-                </a>
-                <button type="submit" class="btn btn-primary">
-					<i class="feather feather-save sidemenu_icon"></i>
-					Guardar
-				</button>
-            </div>
-        </form>
-		</div>
+                    </div>
+                </div>
+                <div class="card-footer text-right">
+                    <a role="button" class="btn btn-outline-dark" href="{{ url()->previous() }}">
+                        <i class="feather feather-corner-down-left sidemenu_icon"></i>
+                        Regresar
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="feather feather-save sidemenu_icon"></i>
+                        Guardar
+                    </button>
+                </div>
+            </form>
+            </div>        
+        </div>
 	</div>
 </div>
 

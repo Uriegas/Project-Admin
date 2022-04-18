@@ -18,52 +18,54 @@
 <!-- CONTENIDO -->
 <div class="row">
 	<div class="col-xl-12 col-md-12 col-lg-12">
-		<div class="card">
-        <form action="{{ route('cotizacion.update', $item->id) }}" method="POST" enctype="multipart/form-data">
-        @method('PUT')
-        @csrf
-			<div class="card-header d-xl-flex d-block">
-				<div class="card-leftheader">
-					<h4 class="card-title" id="impuestos">Información del Producto</h4>
-				</div>
-			</div>
-			<div class="card-body text-center">
-				<div class="col-sm-12">
-                    <!-- Concepto -->
-                    <div class="row mb-3">
-                        <label for="" class="col-sm-4 col-form-label">Concepto</label>
-                        <div class="col-sm-8">
-                            <input id="concepto" name="concepto" type="text" value="{{$item->concepto}}" class="form-control" autofocus required>
+        <div class="text-center w-90 d-flex justify-content ml-5">
+            <div class="card">
+            <form action="{{ route('cotizacion.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+            @method('PUT')
+            @csrf
+                <div class="card-header d-xl-flex d-block">
+                    <div class="card-leftheader">
+                        <h4 class="card-title" id="impuestos">Información del Producto</h4>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <div class="col-sm-12">
+                        <!-- Concepto -->
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-4 col-form-label">Concepto</label>
+                            <div class="col-sm-8">
+                                <input id="concepto" name="concepto" type="text" value="{{$item->concepto}}" class="form-control" autofocus required>
+                            </div>
+                        </div>
+                        <!-- Cantidad -->
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-4 col-form-label">Cantidad</label>
+                            <div class="col-sm-8">
+                                <input name="cantidad" id="cantidad" type="text" value="{{$item->cantidad}}" class="form-control" autofocus required>
+                            </div>
+                        </div>
+                        <!-- Costo total -->
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-4 col-form-label">Monto</label>
+                            <div class="col-sm-8">
+                                <input name="monto" id="total" type="text" value="{{$item->monto}}" class="form-control" autofocus required>
+                            </div>
                         </div>
                     </div>
-                    <!-- Cantidad -->
-                    <div class="row mb-3">
-                        <label for="" class="col-sm-4 col-form-label">Cantidad</label>
-                        <div class="col-sm-8">
-                            <input name="cantidad" id="cantidad" type="text" value="{{$item->cantidad}}" class="form-control" autofocus required>
-                        </div>
-                    </div>
-                    <!-- Costo total -->
-                    <div class="row mb-3">
-                        <label for="" class="col-sm-4 col-form-label">Monto</label>
-                        <div class="col-sm-8">
-                            <input name="monto" id="total" type="text" value="{{$item->monto}}" class="form-control" autofocus required>
-                        </div>
-                    </div>
-				</div>
-			</div>
-            <div class="card-footer text-right">
-                <a role="button" class="btn btn-outline-dark" href="{{ url()->previous() }}">
-                    <i class="feather feather-corner-down-left sidemenu_icon"></i>
-                    Regresar
-                </a>
-                <button type="submit" class="btn btn-primary">
-					<i class="feather feather-save sidemenu_icon"></i>
-					Guardar
-				</button>
+                </div>
+                <div class="card-footer text-right">
+                    <a role="button" class="btn btn-outline-dark" href="{{ url()->previous() }}">
+                        <i class="feather feather-corner-down-left sidemenu_icon"></i>
+                        Regresar
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="feather feather-save sidemenu_icon"></i>
+                        Guardar
+                    </button>
+                </div>
+            </form>
             </div>
-        </form>
-		</div>
+        </div>
 	</div>
 </div>
 

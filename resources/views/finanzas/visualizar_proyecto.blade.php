@@ -57,7 +57,7 @@
                             <td>{{$item->monto}}</td>
                             <td>
                                 {{-- <button type="button" class="btn btn-warning mr-5" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil mr-1"></i> Editar</button>
-                                <button type="button" class="btn btn-danger mr-5" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash mr-1"></i> Eliminar</button> --}}
+                                <button type="button" class="btn btn-danger mr-5"  data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash mr-1"></i> Eliminar</button> --}}
 
                                 {{-- <a href="" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a> --}}
 
@@ -65,7 +65,7 @@
                                 <form action="{{route('cotizacion.destroy', $item->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="bi bi-trash3-fill text-danger show-confirm" data-toggle="tooltip" data-placement="top" title="Eliminar" id="delete-item" type="submit"></button>
+                                    <button class="bi bi-trash3-fill text-danger show-confirm" style="border:none; background-color:transparent;" data-toggle="tooltip" data-placement="top" title="Eliminar" id="delete-item" type="submit"></button>
                                 </form>
                             </td>
                         </tr>
@@ -81,7 +81,7 @@
 
             <div class="d-flex float-right mr-5 mb-3">
                 <div class="mr-5">
-                    <button type="button" class="btn bg-warning text-white mr-5"><i class="bi bi-file-earmark-pdf-fill mr-2 text-white" style="font-size: 18px;"></i>Ver PDF</button>
+                    <button type="button" class="btn bg-warning text-white mr-5" ><i class="bi bi-file-earmark-pdf-fill mr-2 text-white" style="font-size: 18px;"></i>Ver PDF</button>
                 </div>
             </div>
 
