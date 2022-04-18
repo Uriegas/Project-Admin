@@ -67,12 +67,6 @@
                     </tbody>
                 </table>
             </div>
-
-            <div class="d-flex float-right mr-5 mb-3">
-                <div class="mr-5">
-                    <button type="button" class="btn bg-warning text-white mr-5"><i class="bi bi-file-earmark-pdf-fill mr-2 text-white" style="font-size: 18px;"></i>Ver PDF</button>
-                </div>
-            </div>
         </div>    
     </div>
 </div>
