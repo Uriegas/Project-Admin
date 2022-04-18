@@ -21,7 +21,7 @@
 <!-- CABECERA -->
 <div class="page-header d-xl-flex d-block ml-5">
     <div class="page-leftheader">
-        <h4 class="page-title mt-5">Dashboard</h4>
+       <!--  <h4 class="page-title mt-5">Dashboard</h4> -->
     </div>
 </div>
 <!-- FIN CABECERA -->
@@ -35,11 +35,18 @@
                         <div class="card-body">
                             <div class="container">
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                    <ol class="carousel-indicators">
+                                   <!--  <ol class="carousel-indicators">
                                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                                    </ol>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
+                                    </ol> -->
                                     <div class="carousel-inner">
                                         <div class="carousel-item active" >
                                         <img class="d-block w-100" src="{{ asset('img/imagen1.jpg') }}" alt="First slide">
@@ -49,6 +56,24 @@
                                     </div>
                                     <div class="carousel-item">
                                         <img class="d-block w-100" src="{{ asset('img/imagen3.jpg') }}" alt="Third slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="{{ asset('img/imagen4.jpg') }}" alt="Third slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="{{ asset('img/imagen5.jpg') }}" alt="Third slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="{{ asset('img/imagen6.jpg') }}" alt="Third slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="{{ asset('img/imagen7.jpg') }}" alt="Third slide">
+                                    </div>
+                                    <div class="carousel-item"> 
+                                        <img class="d-block w-100" src="{{ asset('img/imagen8.jpg') }}" alt="Third slide">
+                                    </div>
+                                    <div class="carousel-item"> 
+                                        <img class="d-block w-100" src="{{ asset('img/imagen9.jpg') }}" alt="Third slide">
                                     </div>
                                 </div>
 
@@ -68,7 +93,7 @@
         </div>
     </div>
 
-    <br><br><br><br>
+    <br><br><br><br><br><br><br><br><br>
 
     <div class="row" style="margin-top:100px;">
     <div class="col-xl-12 col-md-12 col-lg-12 text-center justify-content-center justify-content">
@@ -76,47 +101,34 @@
             <div class="row text-center justify-content-center justify-content">
                 
                 <div class="col-5">
-                    <div class="text-black mb-3">
+                    <div class="card text-white bg-info mb-3 card-hover">
                         <div class="card-body">
-                            <br><br>
+                            <br><br><br><br><br>
                             <h1>Misión</h1>
                             <br><br>
                             <p>Ofrecer soluciones en desarrollo de tecnología de última generación para actuales y potenciales clientes que requieran un 
                                 servicio de excelente calidad. Para ello, se trabaja en un ambiente de calidad total donde el servicio ofrecido es un fiel 
                                 reflejo de la eficacia y eficiencia, que satisfaga las necesidades de nuestros clientes en términos de tecnología, innovación, 
                                 confiabilidad y cumplimiento de normas.</p>
-                            <br><br>
+                            <br><br><br><br><br>
                         </div>
                     </div>
                 </div>
                 
                 <div class="col-5">
-                    <div class="text-black mb-3">
+                    <div class="card text-white bg-info mb-3 card-hover">
                         <div class="card-body">
-                            <br><br>
+                            <br><br><br><br><br>
                             <h1>Visión</h1>
                             <br><br>
                             <p>Ser una empresa líder reconocida como una de las mejores empresas tecnológicas de la región noreste de México, permitiéndonos 
                                 ser un aliado de calidad para nuestros clientes. Nuestro principal objetivo es crear y desarrollar soluciones de software innovadoras 
                                 que destaquen por su eficiencia, automatización y simplicidad de uso. La esencia de Foster Intelligence es nuestro equipo de trabajo, 
                                 caracterizado por sus amplios conocimientos y alta productividad. </p>
-                            <br><br>
+                            <br><br><br><br>
                         </div>
                     </div>
                 </div>
-                
-                <!-- <div class="col-5">
-                    <div class="text-black mb-3">
-                        <div class="card-body">
-                            <br><br>
-                            <h1>Organigrama Empresarial</h1>
-                            <br><br>
-                            <img src="{{ asset('img/organigrama.png') }}" alt="organigramaEmpresarial" style="width:700px; height: 730px;">
-                            <br><br><br><br><br>
-                        </div>
-                    </div>
-                </div> -->
-
             </div>
         </div>
     </div>
