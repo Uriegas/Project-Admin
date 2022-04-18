@@ -79,7 +79,7 @@
                     <div class="text-black mb-3">
                         <div class="card-body">
                             <br><br>
-                            <h1>Msión</h1>
+                            <h1>Misión</h1>
                             <br><br>
                             <p>Ofrecer soluciones en desarrollo de tecnología de última generación para actuales y potenciales clientes que requieran un 
                                 servicio de excelente calidad. Para ello, se trabaja en un ambiente de calidad total donde el servicio ofrecido es un fiel 

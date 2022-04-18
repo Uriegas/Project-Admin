@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdministracionController;
 use App\Http\Controllers\DesarrolloController;
+use App\Http\Controllers\FinanzasController;
 use App\Http\Controllers\MarkVenController;
 use App\Http\Controllers\RHController;
 use App\Http\Controllers\PresupuestoController;
@@ -21,6 +22,10 @@ use App\Http\Controllers\CotizacionController;
 |
 */
 
+Route::get('/', function () {
+    return view('home');
+})->name('index');
+
 Route::get('/recursos-humanos/empleados', function () {
     return view('recursos-humanos/empleados.index');
 })->name('Lista Empleados');
@@ -28,25 +33,12 @@ Route::get('/recursos-humanos/evaluaciones', function () {
     return view('recursos-humanos.evaluaciones');
 })->name('Lista Evaluaciones');
 
-Route::get('/', function () {
-    return view('home');
-})->name('index');
-
-/* 
-Route::group(['middleware' => ['auth']], function (){ */
-    Route::get('/users',[UserController::class,'index']);
-
+    /* Sección para la navegación del menú  */
     Route::resource('administracion', AdministracionController::class);
-
     Route::resource('desarrollo', DesarrolloController::class);
-
-    Route::get('finanzas', function (){return view('finanzas.index');});
-
+    Route::resource('finanzas', FinanzasController::class);
     Route::resource('mrk-ventas', MarkVenController::class);
-
     Route::resource('recursos-humanos', RHController::class);
-/*    }); */
-
 
     Route::get('recursos-humanos/empleados', [EmpleadoController::class,'index']);
     
@@ -94,13 +86,11 @@ Route::group(['middleware' => ['auth']], function (){ */
     //**************************************** */
 
     // Rutas Finanzas
-
     Route::resources([
         '/presupuesto' => PresupuestoController::class,
         '/reporte' => ReporteGastosController::class,
         '/cotizacion' => CotizacionController::class,
     ]);
-
     //**************************************** */
 
     // Desarrollo
@@ -124,4 +114,4 @@ Route::group(['middleware' => ['auth']], function (){ */
     //Route::get('desarrollo/tablero')
     //**************************************** */
 
-Auth::routes();
+    Auth::routes();

@@ -147,16 +147,13 @@
         <script>
             const urlAgregarTablero = "{{route('agregarTablero')}}";
             const formAgregarTablero = document.getElementById('formAgregarTablero');
-
             formAgregarTablero.addEventListener('submit', function(e)
             {
                 e.preventDefault();
-
                 const fetchData = {
                     method: "POST",
                     body: new FormData(formAgregarTablero)
                 };  
-
                 fetch(urlAgregarTablero, fetchData).then(r => r.json()).then(data =>
                 {
                     window.location.href = "{{route('showAllTableros')}}";
@@ -168,16 +165,13 @@
         <script>
             const urlEditarTablero = "{{route('editarTablero')}}";
             const formEditarTablero = document.getElementById('formEditarTablero');
-
             formEditarTablero.addEventListener('submit', function(e)
             {
                 e.preventDefault();
-
                 const fetchData = {
                     method: "POST",
                     body: new FormData(formEditarTablero)
                 };  
-
                 fetch(urlEditarTablero, fetchData).then(r => r.json()).then(data =>
                 {
                     window.location.href = "{{route('showAllTableros')}}";
@@ -192,9 +186,7 @@
             $('.btnVerTablero').click(function(event)
             {
                 event.preventDefault();
-
                 var urlData = $(this).attr('data-id');
-
                 $.ajax({
                     url: urlData,
                     type: 'GET',
@@ -211,7 +203,6 @@
                     $('#verTableroFechaFin').val(response.tablero.fin);
                 });
             });
-
             $('.btnEliminarTablero').click(function(event)
             {
                 event.preventDefault();
@@ -221,7 +212,6 @@
                 confirmarEliminarTablero(urlDelete);
                 
             });
-
             
         });
     </script>
@@ -234,24 +224,19 @@
             $('.btnPermitirEdicionTablero').click(function(event)
             {
                 event.preventDefault();
-
                 $(this).find('span').text(' Cancelar edición');
-
                 if($('#btnEditarTablero').is(":visible"))
                 {
                     $('#btnEditarTablero').hide();
-
                     $('#verTableroTitulo').attr('readonly', true);
                     $('#verTableroProyecto').attr('readonly', true);
                     $('#verTableroDescripcion').attr('readonly', true);
                     $('#verTableroFechaFin').attr('readonly', true);
-
                     $(this).find('span').text(' Permitir edición');
                 }
                 else
                 {
                     $('#btnEditarTablero').show();
-
                     $('#verTableroTitulo').attr('readonly', false);
                     $('#verTableroDescripcion').attr('readonly', false);
                     $('#verTableroFechaFin').attr('readonly', false);
@@ -266,15 +251,12 @@
         function confirmarEliminarTablero(urlDelete)
         {
             $('#modalEliminar').modal('show');
-
             $('#btnConfirmarEliminarTablero').click(function(event)
             {
                 event.preventDefault();
-
                 eliminarTablero(urlDelete);
             });
         }
-
         function eliminarTablero(urlDelete)
         {
             $.ajax({
