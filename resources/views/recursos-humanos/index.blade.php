@@ -22,7 +22,20 @@
     <div class="page-leftheader">
         <h4 class="page-title mt-5">Recursos Humanos</h4>
     </div>
-
+    <div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
+        <br>
+        <i class="fa-solid fa-user mr-2 fs-2 my-auto"></i><div class="mt-1">Perfil: {{Auth::user()->name}}</div>
+        <div class="btn-list">
+             <a href="{{ route('logout') }}" class="dropdown-item d-flex text-danger"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+             <i class="fa-solid fa-power-off mr-3 fs-30 my-auto"></i>
+                    <div class="mt-1">Cerrar sesión</div>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
+                @csrf
+            </form>
+        </div>
+    </div>
+</div>
 </div>
 <!-- FIN CABECERA -->
 
