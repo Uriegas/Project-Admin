@@ -55,7 +55,7 @@
                             <td>{{$item->concepto}}</td>
                             <td>{{$item->cantidad}}</td>
                             <td>{{$item->monto}}</td>
-                            <td>
+                            <td style="display: flex; place-content: center;">
                                 {{-- <button type="button" class="btn btn-warning mr-5" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil mr-1"></i> Editar</button>
                                 <button type="button" class="btn btn-danger mr-5"  data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash mr-1"></i> Eliminar</button> --}}
 
@@ -65,7 +65,7 @@
                                 <form action="{{route('cotizacion.destroy', $item->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="bi bi-trash3-fill text-danger show-confirm" style="border:none; background-color:transparent;" data-toggle="tooltip" data-placement="top" title="Eliminar" id="delete-item" type="submit"></button>
+                                    <button class="bi bi-trash3-fill text-danger show-confirm" style="border:none; background-color:transparent; font-size: 18px;" data-toggle="tooltip" data-placement="top" title="Eliminar" id="delete-item" type="submit"></button>
                                 </form>
                             </td>
                         </tr>

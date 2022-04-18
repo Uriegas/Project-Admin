@@ -53,14 +53,14 @@
                                     <th id="concepto" name="concepto">{{$gasto->concepto}}</th>
                                     <td id="cantidad" name="cantidad">{{$gasto->cantidad}}</td>
                                     <td id="total" name="total">{{$gasto->total}}</td>
-                                    <td>
+                                    <td style="display: flex; place-content: center;">
                                         <a href="{{route('reporte.edit', $gasto->id)}}"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
                                         {{-- <a href="{{route('reporte.edit', $gasto->id)}}" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
                                         <button type="button" class="btn btn-success" id="edit-item">Editar</button> --}}
                                         <form action="{{route('reporte.destroy', $gasto->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="bi bi-trash3-fill text-danger show-confirm" style="border:none; background-color:transparent;" data-toggle="tooltip" data-placement="top" title="Eliminar" id="delete-item" type="submit"></button>
+                                            <button class="bi bi-trash3-fill text-danger show-confirm" style="border:none; background-color:transparent; font-size: 18px;" data-toggle="tooltip" data-placement="top" title="Eliminar" id="delete-item" type="submit"></button>
                                         </form>
                                     </td>
                                 </tr>
