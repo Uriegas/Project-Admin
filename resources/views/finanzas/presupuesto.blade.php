@@ -22,19 +22,6 @@
 <div class="row">
     <div class="col-xl-12 col-md-12 col-lg-12">
         <div class="container ml-5"> <!-- Falta alinear correctamente a la derecha-->
-            <div class="d-flex float-right mr-5 mb-3">
-                <div>
-                    <form class="navbar-form mr-3">
-                        <div class="input-group no-border">
-                            <input type="text" value="" class="form-control" placeholder="Buscar...">
-                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                            <i class="bi bi-search"></i>
-                            <div class="ripple-container"></div>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
 
             <div class="text-center w-90 d-flex justify-content ml-5">
                 <table class="table table-striped table-hover table-bordered text-center ml-5 mt-5">
@@ -58,8 +45,6 @@
                 <div class="mr-5">
                     <button type="button" class="btn bg-warning text-white mr-5"><i class="bi bi-file-earmark-pdf-fill mr-2 text-white" style="font-size: 18px;"></i>Ver PDF</button>
                     <button type="button" class="btn bg-info text-white mr-5" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-white" style="font-size: 18px;"></i>Editar</button>
-                    <button type="button" class="btn btn-danger mr-5">Descartar</button>
-                    <button type="button" class="btn btn-success mr-5">Guardar</button>
                 </div>
             </div>
 
@@ -121,11 +106,9 @@
                                     </div>
                                 </div>
                                 <!-- Botones -->
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <button type="button" class="btn btn-danger mr-5" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-success">Actualizar</button>
-                                    </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Actualizar</button>
                                 </div>
                             </form>
                         </div>

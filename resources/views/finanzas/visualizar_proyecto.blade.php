@@ -7,9 +7,9 @@
 <!-- CABECERA -->
 <div class="page-header d-xl-flex d-block ml-5">
     <div class="page-leftheader ml-5 mt-5">
-        <h4 class="page-title">Nombre del proyecto</h4> 
+        <h4 class="page-title">{{$proyecto->nombre}}</h4> 
         <p style="font-size: 16px;" class="navbar-brand my-0">
-            <a class="navbar-brand mr-1" href="/finanzas" style="font-size: 16px; color: #9568A9;">Finanzas</a> / <a class="navbar-brand mr-1" href="/cotizacion" style="font-size: 16px; color: #af83c2;">Cotización de proyectos</a>/ Nombre del proyecto
+            <a class="navbar-brand mr-1" href="/finanzas" style="font-size: 16px; color: #9568A9;">Finanzas</a> / <a class="navbar-brand mr-1" href="{{route('cotizacion.index')}}" style="font-size: 16px; color: #af83c2;">Cotización de proyectos</a>/ {{$proyecto->nombre}}
         </p>
     </div>
 </div>
@@ -50,90 +50,30 @@
                         </tr>
                     </thead>
                     <tbody class="">
+                        @foreach($presupuesto as $item)
                         <tr>
-                            <td colspan="4" class="table-info" style="text-align: left;">Departamento de Administración</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Cartuchos para impresora</th>
-                            <td>10</td>
-                            <td>$12,000.00</td>
-                            <td>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a>
+                            <td>{{$item->concepto}}</td>
+                            <td>{{$item->cantidad}}</td>
+                            <td>{{$item->monto}}</td>
+                            <td style="display: flex; place-content: center;">
+                                {{-- <button type="button" class="btn btn-warning mr-5" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil mr-1"></i> Editar</button>
+                                <button type="button" class="btn btn-danger mr-5"  data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash mr-1"></i> Eliminar</button> --}}
+
+                                {{-- <a href="" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a> --}}
+
+                                <a href="{{route('cotizacion.edit', $item->id)}}"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
+                                <form action="{{route('cotizacion.destroy', $item->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="bi bi-trash3-fill text-danger show-confirm" style="border:none; background-color:transparent; font-size: 18px;" data-toggle="tooltip" data-placement="top" title="Eliminar" id="delete-item" type="submit"></button>
+                                </form>
                             </td>
                         </tr>
+                        @endforeach
                         <tr>
-                            <th scope="row">Gasto total:</th>
+                            <th scope="row">Gasto Total:</th>
                             <td>-</td>
-                            <td colspan="2" style="text-align: right;">$12,000.00</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="table-info" style="text-align: left;">Departamento de Recursos Humanos</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Cartuchos para impresora</th>
-                            <td>10</td>
-                            <td>$12,000.00</td>
-                            <td>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Gasto total:</th>
-                            <td>-</td>
-                            <td colspan="2" style="text-align: right;">$12,000.00</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="table-info" style="text-align: left;">Departamento de Marketing y Ventas</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Publicidad</th>
-                            <td>10</td>
-                            <td>$12,000.00</td>
-                            <td>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Gasto total:</th>
-                            <td>-</td>
-                            <td colspan="2" style="text-align: right;">$12,000.00</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="table-info" style="text-align: left;">Departamento de Finanzas</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Cartuchos para impresora</th>
-                            <td>10</td>
-                            <td>$12,000.00</td>
-                            <td>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Gasto total:</th>
-                            <td>-</td>
-                            <td colspan="2" style="text-align: right;">$12,000.00</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="table-info" style="text-align: left;">Departamento de Desarrollo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Gastos operativos</th>
-                            <td>10</td>
-                            <td>$12,000.00</td>
-                            <td>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-dark" style="font-size: 18px;"></i></a>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#eliminar"><i class="bi bi-trash3-fill text-danger" style="font-size: 18px;"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Gasto total:</th>
-                            <td>-</td>
-                            <td colspan="2" style="text-align: right;">$12,000.00</td>
+                            <td colspan="2" style="text-align: right;">${{$total}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -141,9 +81,7 @@
 
             <div class="d-flex float-right mr-5 mb-3">
                 <div class="mr-5">
-                    <button type="button" class="btn bg-warning text-white mr-5"><i class="bi bi-file-earmark-pdf-fill mr-2 text-white" style="font-size: 18px;"></i>Ver PDF</button>
-                    <button type="button" class="btn btn-danger mr-5">Descartar</button>
-                    <button type="button" class="btn btn-success mr-5">Guardar</button>
+                    <button type="button" class="btn bg-warning text-white mr-5" ><i class="bi bi-file-earmark-pdf-fill mr-2 text-white" style="font-size: 18px;"></i>Ver PDF</button>
                 </div>
             </div>
 
@@ -292,49 +230,36 @@
                         </div>
                         <div class="modal-body">
 
-                            <form action="#">
-                                <!-- Departamento -->
-                                <div class="row mb-3">
-                                    <label for="" class="col-sm-4 col-form-label">Departamento</label>
-                                    <div class="col-sm-8">
-                                        <div class="dropdown">
-                                            <select name="Departamento" class="form-select">
-                                                <option value="0" selected>Seleccionar...</option>
-                                                <option value="1">Administración</option>
-                                                <option value="2">Recursos Humanos</option>
-                                                <option value="3">Marketing y Ventas</option>
-                                                <option value="4">Finanzas</option>
-                                                <option value="5">Desarrollo</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+                            <form action="{{route('cotizacion.store')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <!-- Hidden proyecto_id -->
+                                <input type="hidden" name="proyecto_id" id="proyecto_id" value="{{$proyecto->id}}">
                                 <!-- Concepto -->
                                 <div class="row mb-3">
                                     <label for="" class="col-sm-4 col-form-label">Concepto</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" autofocus required>
+                                        <input type="text" name="concepto" id="concepto" class="form-control" autofocus required>
                                     </div>
                                 </div>
                                 <!-- Cantidad -->
                                 <div class="row mb-3">
                                     <label for="" class="col-sm-4 col-form-label">Cantidad</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" autofocus required>
+                                        <input type="text" name="cantidad" id="cantidad" class="form-control" autofocus required>
                                     </div>
                                 </div>
                                 <!-- Costo total -->
                                 <div class="row mb-3">
-                                    <label for="" class="col-sm-4 col-form-label">Costo total</label>
+                                    <label for="" class="col-sm-4 col-form-label">Monto</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" autofocus required>
+                                        <input type="text" name="monto" id="monto" class="form-control" autofocus required>
                                     </div>
                                 </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button submit" class="btn btn-primary">Agregar</button>
+                                </div>
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Agregar</button>
                         </div>
                     </div>
                 </div>
