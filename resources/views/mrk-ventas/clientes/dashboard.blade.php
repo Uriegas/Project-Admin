@@ -38,7 +38,7 @@
                         <th scope="col" style="color: #fff;">NOMBRE</th>
                         <th scope="col" style="color: #fff;">ORGANIZACIÓN</th>
                         <th scope="col" style="color: #fff;">TELÉFONO DE CONTACTO</th>
-                        <th scope="col" style="color: #fff;">INTERÉS</th>
+                        <th scope="col" style="color: #fff; width: 300px;">INTERÉS</th>
                         <th scope="col" style="color: #fff;">OPCIONES</th>
                     </tr>
                 </thead>
