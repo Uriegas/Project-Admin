@@ -96,7 +96,7 @@ class DesarrolloController extends Controller
     public function showAllTableros()
     {
         $data['tableros'] = Tablero::all();
-        $data['proyectos'] = Proyectos::select('id', 'descripcion')->get();
+        $data['proyectos'] = Proyectos::select('id', 'nombre')->get();
         return view("desarrollo.index", $data);
     }
 

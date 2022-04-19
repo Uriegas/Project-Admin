@@ -43,7 +43,6 @@
             </div>
             <div class="d-flex float-right mr-5 mb-3">
                 <div class="mr-5">
-                    <button type="button" class="btn bg-warning text-white mr-5"><i class="bi bi-file-earmark-pdf-fill mr-2 text-white" style="font-size: 18px;"></i>Ver PDF</button>
                     <button type="button" class="btn bg-info text-white mr-5" data-bs-toggle="modal" data-bs-target="#editar"><i class="bi bi-pencil-fill mr-2 text-white" style="font-size: 18px;"></i>Editar</button>
                 </div>
             </div>

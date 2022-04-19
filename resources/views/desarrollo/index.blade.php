@@ -126,7 +126,7 @@
                             <select id="disabledSelect" class="form-select" name="idProyecto">
                                 <option selected>Seleccione ID</option>
                                 @foreach ($proyectos as $proyecto)
-                                    <option value="{{$proyecto->id}}">{{$proyecto->descripcion}}</option>
+                                    <option value="{{$proyecto->id}}">{{$proyecto->nombre}}</option>
                                 @endforeach
                             </select><br>
                             Descripción: 
